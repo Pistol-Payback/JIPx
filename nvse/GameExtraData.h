@@ -348,9 +348,6 @@ public:
 			TESAmmo			*ammo;
 			TESObjectARMO	*armor;
 			AlchemyItem		*ingestible;
-			TESObjectMISC	*misc;
-			BGSNote			*note;
-
 		};
 
 		EntryData(ExtendDataList *extend, SInt32 count, TESForm *item) :
@@ -620,7 +617,8 @@ public:
 		TESFullName		fullName;		// 00
 		UInt8			flags;			// 0C
 		UInt8			pad0D;			// 0D
-		UInt16			type;			// 0E
+		UInt8			type;			// 0E
+		UInt8			pad0F;			// 0F
 		TESReputation	*reputation;	// 10
 
 		const char *GetTexturePath() const {return (flags & 2) ? ((const char**)0x11A0404)[type] : (const char*)0x1075030;}
@@ -657,12 +655,6 @@ public:
 	virtual void	DoLoad(UInt32 arg1);
 
 	BitField<16>	verticalSeenBits[16];	// 04	16x16 grid bitfield
-
-	void Dump()
-	{
-		for (UInt32 i = 0; i < 16; i++)
-			verticalSeenBits[i].Dump();
-	}
 };
 static_assert(sizeof(SeenData) == 0x24);
 

@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "Release\\memory_pool.obj",
+            "outputs": [
+                "C:\\Users\\Xavier\\source\\repos\\JIPxx\\Release\\vc143.pdb",
+                "Release\\"
+            ],
+            "requires": []
+        }
+    ]
+}

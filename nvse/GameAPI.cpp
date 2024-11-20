@@ -19,12 +19,12 @@ const _ShowMessageBox_button ShowMessageBox_button = (_ShowMessageBox_button)0x0
 
 bool GetConsoleEcho()
 {
-	return *bEchoConsole;
+	return *bEchoConsole != 0;
 }
 
 void SetConsoleEcho(bool doEcho)
 {
-	*bEchoConsole = doEcho;
+	*bEchoConsole = doEcho ? 1 : 0;
 }
 
 ConsoleManager * ConsoleManager::GetSingleton(void)

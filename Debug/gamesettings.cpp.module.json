@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "Debug\\GameSettings.obj",
+            "outputs": [
+                "C:\\Users\\Xavier\\source\\repos\\JIPxx\\Debug\\vc143.pdb",
+                "Debug\\"
+            ],
+            "requires": []
+        }
+    ]
+}

@@ -44,16 +44,14 @@ __declspec(naked) UInt32 __fastcall AlignBucketCount(UInt32 count)
 	}
 }
 
-#define STR_HASH_SEED 0xD39CA509UL
-
 __declspec(naked) UInt32 __fastcall StrHashCS(const char *inKey)
 {
 	__asm
 	{
-		test	ecx, ecx
-		jz		nullStr
 		push	ebx
-		mov		eax, STR_HASH_SEED
+		mov		eax, 0x6B49D20B
+		test	ecx, ecx
+		jz		done
 		ALIGN 16
 	iterHead:
 		mov		ebx, [ecx]
@@ -91,10 +89,6 @@ __declspec(naked) UInt32 __fastcall StrHashCS(const char *inKey)
 		sub		eax, edx
 		add		ecx, 4
 		jmp		iterHead
-	nullStr:
-		xor		eax, eax
-		retn
-		ALIGN 16
 	done:
 		pop		ebx
 		retn
@@ -105,11 +99,11 @@ __declspec(naked) UInt32 __fastcall StrHashCI(const char *inKey)
 {
 	__asm
 	{
-		test	ecx, ecx
-		jz		nullStr
 		push	ebx
 		push	esi
-		mov		eax, STR_HASH_SEED
+		mov		eax, 0x6B49D20B
+		test	ecx, ecx
+		jz		done
 		mov		esi, ecx
 		xor		ecx, ecx
 		ALIGN 16
@@ -153,10 +147,6 @@ __declspec(naked) UInt32 __fastcall StrHashCI(const char *inKey)
 		sub		eax, edx
 		add		esi, 4
 		jmp		iterHead
-	nullStr:
-		xor		eax, eax
-		retn
-		ALIGN 16
 	done:
 		pop		esi
 		pop		ebx

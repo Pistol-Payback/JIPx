@@ -2,86 +2,86 @@
 
 constexpr ParamInfo kParams_OneInt[] =
 {
-	{kParamType_Integer}
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_TwoInts[] =
 {
-	{kParamType_Integer},
-	{kParamType_Integer}
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneOptionalInt[] =
 {
-	{kParamType_Integer, 1}
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneInt_OneOptionalInt[] =
 {
-	{kParamType_Integer},
-	{kParamType_Integer, 1}
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneFloat[] =
 {
-	{kParamType_Float}
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_OneString[] =
 {
-	{kParamType_String}
+	{"String", kParamType_String, 0}
 };
 
 constexpr ParamInfo kParams_OneString_OneFloat[] =
 {
-	{kParamType_String},
-	{kParamType_Float}
+	{"String", kParamType_String, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_TwoFloats[] =
 {
-	{kParamType_Float},
-	{kParamType_Float}
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_OneObjectID[] =
 {
-	{kParamType_ObjectID}
+	{"Object ID", kParamType_ObjectID, 0}
 };
 
 constexpr ParamInfo kParams_OneOptionalObjectID[] =
 {
-	{kParamType_ObjectID, 1}
+	{"Object ID", kParamType_ObjectID, 1}
 };
 
 constexpr ParamInfo kParams_OneObjectID_OneInt[] =
 {
-	{kParamType_ObjectID},
-	{kParamType_Integer}
+	{"Object ID", kParamType_ObjectID, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
-#define FORMAT_STRING_PARAMS 	\
-	{kParamType_String}, \
-	{kParamType_Float, 1}, \
-	{kParamType_Float, 1}, \
-	{kParamType_Float, 1}, \
-	{kParamType_Float, 1}, \
-	{kParamType_Float, 1}, \
-	{kParamType_Float, 1}, \
-	{kParamType_Float, 1}, \
-	{kParamType_Float, 1}, \
-	{kParamType_Float, 1}, \
-	{kParamType_Float, 1}, \
-	{kParamType_Float, 1}, \
-	{kParamType_Float, 1}, \
-	{kParamType_Float, 1}, \
-	{kParamType_Float, 1}, \
-	{kParamType_Float, 1}, \
-	{kParamType_Float, 1}, \
-	{kParamType_Float, 1}, \
-	{kParamType_Float, 1}, \
-	{kParamType_Float, 1}, \
-	{kParamType_Float, 1} 
+ #define FORMAT_STRING_PARAMS 	\
+	{"format string",	kParamType_String, 0}, \
+	{"variable",		kParamType_Float, 1}, \
+	{"variable",		kParamType_Float, 1}, \
+	{"variable",		kParamType_Float, 1}, \
+	{"variable",		kParamType_Float, 1}, \
+	{"variable",		kParamType_Float, 1}, \
+	{"variable",		kParamType_Float, 1}, \
+	{"variable",		kParamType_Float, 1}, \
+	{"variable",		kParamType_Float, 1}, \
+	{"variable",		kParamType_Float, 1}, \
+	{"variable",		kParamType_Float, 1}, \
+	{"variable",		kParamType_Float, 1}, \
+	{"variable",		kParamType_Float, 1}, \
+	{"variable",		kParamType_Float, 1}, \
+	{"variable",		kParamType_Float, 1}, \
+	{"variable",		kParamType_Float, 1}, \
+	{"variable",		kParamType_Float, 1}, \
+	{"variable",		kParamType_Float, 1}, \
+	{"variable",		kParamType_Float, 1}, \
+	{"variable",		kParamType_Float, 1}, \
+	{"variable",		kParamType_Float, 1} 
 
 constexpr ParamInfo kParams_FormatString[] =
 {
@@ -90,1747 +90,1747 @@ constexpr ParamInfo kParams_FormatString[] =
 
 constexpr ParamInfo kParams_OneActor[] =
 {
-	{kParamType_Actor}
+	{"Actor", kParamType_Actor, 0}
 };
 
 constexpr ParamInfo kParams_OneAxis[] =
 {
-	{kParamType_Axis}
+	{"Axis", kParamType_Axis, 0}
 };
 
 constexpr ParamInfo kParams_FormList[] =
 {
-	{kParamType_FormList}
+	{"List", kParamType_FormList, 0}
 };
 
 constexpr ParamInfo kParams_TwoStrings[] =
 {
-	{kParamType_String},
-	{kParamType_String}
+	{"String", kParamType_String, 0},
+	{"String", kParamType_String, 0}
 };
 
 constexpr ParamInfo kParams_OneBoundObject[] =
 {
-	{kParamType_BoundObject}
+	{"Bound Object", kParamType_BoundObject, 0}
 };
 
 constexpr ParamInfo kParams_OneOptionalBoundObject[] =
 {
-	{kParamType_BoundObject, 1}
+	{"Bound Object", kParamType_BoundObject, 1}
 };
 
 constexpr ParamInfo kParams_OneBoundObject_OneOptionalBoundObject[] =
 {
-	{kParamType_BoundObject},
-	{kParamType_BoundObject, 1}
+	{"Bound Object", kParamType_BoundObject, 0},
+	{"Bound Object", kParamType_BoundObject, 1}
 };
 
 constexpr ParamInfo kParams_OneBoundObject_OneInt[] =
 {
-	{kParamType_BoundObject},
-	{kParamType_Integer}
+	{"Bound Object", kParamType_BoundObject, 0},
+	{"Integer", kParamType_Integer, 0}
 };
  
 constexpr ParamInfo kParams_OneInt_OneOptionalBoundObject[] =
 {
-	{kParamType_Integer},
-	{kParamType_BoundObject, 1}
+	{"Integer", kParamType_Integer, 0},
+	{"Bound Object", kParamType_BoundObject, 1}
 };
 
 constexpr ParamInfo kParams_OneQuest[] =
 {
-	{kParamType_Quest}
+	{"Quest", kParamType_Quest, 0}
 };
 
 constexpr ParamInfo kParams_OneOptionalObjectRef[] =
 {
-	{kParamType_ObjectRef, 1}
+	{"Object Ref", kParamType_ObjectRef, 1}
 };
 
 constexpr ParamInfo kParams_OneForm_OneInt[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Integer}
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneForm[] =
 {
-	{kParamType_AnyForm}
+	{"Form", kParamType_AnyForm, 0}
 };
 
 constexpr ParamInfo kParams_OneForm_OneFloat[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Float}
+	{"Form", kParamType_AnyForm, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_OneOptionalForm[] =
 {
-	{kParamType_AnyForm, 1}
+	{"Form", kParamType_AnyForm, 1}
 };
 
 constexpr ParamInfo kParams_OneObjectID_TwoOptionalInts[] =
 {
-	{kParamType_ObjectID},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1}
+	{"Object ID", kParamType_ObjectID, 0},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneOptionalActorBase[] =
 {
-	{kParamType_ActorBase, 1}
+	{"Actor Base", kParamType_ActorBase, 1}
 };
 
 constexpr ParamInfo kParams_OneInt_OneOptionalActorBase[] =
 {
-	{kParamType_Integer},
-	{kParamType_ActorBase, 1}
+	{"Integer", kParamType_Integer, 0},
+	{"Actor Base", kParamType_ActorBase, 1}
 };
 
 constexpr ParamInfo kParams_OneItemOrList_OneOptInt_OneOptFloat_TwoOptInts[] =
 {
-	{kParamType_InvObjOrFormList},
-	{kParamType_Integer, 1},
-	{kParamType_Float, 1},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1}
+	{"Item/List", kParamType_InvObjOrFormList, 0},
+	{"Integer", kParamType_Integer, 1},
+	{"Float", kParamType_Float, 1},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneString_OneFormatString[] =
 {
-	{kParamType_String},
+	{"String", kParamType_String, 0},
 	FORMAT_STRING_PARAMS
 };
 
 constexpr ParamInfo kParams_OneForm_OneInt_OneFloat[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Integer},
-	{kParamType_Float}
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_OneForm_TwoInts[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Integer},
-	{kParamType_Integer}
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_TwoForms[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_AnyForm}
+	{"Form", kParamType_AnyForm, 0},
+	{"Form", kParamType_AnyForm, 0}
 };
 
 constexpr ParamInfo kParams_OneForm_OneInt_OneOptionalForm[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Integer},
-	{kParamType_AnyForm, 1}
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Form", kParamType_AnyForm, 1}
 };
 
 constexpr ParamInfo kParams_OneString_OneOptionalQuest[] =
 {
-	{kParamType_String},
-	{kParamType_Quest, 1}
+	{"String", kParamType_String, 0},
+	{"Quest", kParamType_Quest, 1}
 };
 
 constexpr ParamInfo kParams_OneQuest_OneFloat[] =
 {
-	{kParamType_Quest},
-	{kParamType_Float}
+	{"Quest", kParamType_Quest, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_OneAIPackage_OneInt[] =
 {
-	{kParamType_AIPackage},
-	{kParamType_Integer}
+	{"Package", kParamType_AIPackage, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneAIPackage_TwoInts[] =
 {
-	{kParamType_AIPackage},
-	{kParamType_Integer},
-	{kParamType_Integer}
+	{"Package", kParamType_AIPackage, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneGlobal[] =
 {
-	{kParamType_Global}
+	{"Global", kParamType_Global, 0}
 };
 
 constexpr ParamInfo kParams_OneGlobal_OneFloat[] =
 {
-	{kParamType_Global},
-	{kParamType_Float}
+	{"Global", kParamType_Global, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_OneFaction[] =
 {
-	{kParamType_Faction}
+	{"Faction", kParamType_Faction, 0}
 };
 
 constexpr ParamInfo kParams_OneFaction_OneOptionalReputation[] =
 {
-	{kParamType_Faction},
-	{kParamType_Reputation, 1}
+	{"Faction", kParamType_Faction, 0},
+	{"Reputation", kParamType_Reputation, 1}
 };
 
 constexpr ParamInfo kParams_OneAxis_OneOptionalBoundObject[] =
 {
-	{kParamType_Axis},
-	{kParamType_BoundObject, 1}
+	{"Axis", kParamType_Axis, 0},
+	{"Bound Object", kParamType_BoundObject, 1}
 };
 
 constexpr ParamInfo kParams_TwoDoubles_ThreeOptionalDoubles[] =
 {
-	{kParamType_Double},
-	{kParamType_Double},
-	{kParamType_Double, 1},
-	{kParamType_Double, 1},
-	{kParamType_Double, 1}
+	{"Double", kParamType_Double, 0},
+	{"Double", kParamType_Double, 0},
+	{"Double", kParamType_Double, 1},
+	{"Double", kParamType_Double, 1},
+	{"Double", kParamType_Double, 1}
 };
 
 constexpr ParamInfo kParams_OneCombatStyle_OneInt[] =
 {
-	{kParamType_CombatStyle},
-	{kParamType_Integer}
+	{"Combat Style", kParamType_CombatStyle, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneCombatStyle_OneInt_OneFloat[] =
 {
-	{kParamType_CombatStyle},
-	{kParamType_Integer},
-	{kParamType_Float}
+	{"Combat Style", kParamType_CombatStyle, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_OneCombatStyle_TwoInts[] =
 {
-	{kParamType_CombatStyle},
-	{kParamType_Integer},
-	{kParamType_Integer}
+	{"Combat Style", kParamType_CombatStyle, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneString_TwoOptionalInts[] =
 {
-	{kParamType_String},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1}
+	{"String", kParamType_String, 0},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneString_TwoInts[] =
 {
-	{kParamType_String},
-	{kParamType_Integer},
-	{kParamType_Integer}
+	{"String", kParamType_String, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneString_OneInt_OneFormatString[] =
 {
-	{kParamType_String},
-	{kParamType_Integer},
+	{"String", kParamType_String, 0},
+	{"Integer", kParamType_Integer, 0},
 	FORMAT_STRING_PARAMS
 };
 
 constexpr ParamInfo kParams_OneClass_OneInt[] =
 {
-	{kParamType_Class},
-	{kParamType_Integer}
+	{"Class", kParamType_Class, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneClass_TwoInts[] =
 {
-	{kParamType_Class},
-	{kParamType_Integer},
-	{kParamType_Integer}
+	{"Class", kParamType_Class, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneSound_OneInt[] =
 {
-	{kParamType_Sound},
-	{kParamType_Integer}
+	{"Sound", kParamType_Sound, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneSound_OneInt_OneFloat[] =
 {
-	{kParamType_Sound},
-	{kParamType_Integer},
-	{kParamType_Float}
+	{"Sound", kParamType_Sound, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_OneSound_TwoInts[] =
 {
-	{kParamType_Sound},
-	{kParamType_Integer},
-	{kParamType_Integer}
+	{"Sound", kParamType_Sound, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneForm_OneInt_OneOptionalSound[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Integer},
-	{kParamType_Sound, 1}
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Sound", kParamType_Sound, 1}
 };
 
 constexpr ParamInfo kParams_OneForm_OneInt_OneOptionalObjectID[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Integer},
-	{kParamType_ObjectID, 1}
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Object ID", kParamType_ObjectID, 1}
 };
 
 constexpr ParamInfo kParams_OneWeatherID_OneInt[] =
 {
-	{kParamType_WeatherID},
-	{kParamType_Integer}
+	{"Weather ID", kParamType_WeatherID, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneWeatherID_OneInt_OneOptionalImageSpaceMod[] =
 {
-	{kParamType_WeatherID},
-	{kParamType_Integer},
-	{kParamType_ImageSpaceModifier, 1}
+	{"Weather ID", kParamType_WeatherID, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Image Space Mod", kParamType_ImageSpaceModifier, 1}
 };
 
 constexpr ParamInfo kParams_OneWeatherID_OneInt_OneString[] =
 {
-	{kParamType_WeatherID},
-	{kParamType_Integer},
-	{kParamType_String}
+	{"Weather ID", kParamType_WeatherID, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"String", kParamType_String, 0}
 };
 
 constexpr ParamInfo kParams_OneWeatherID[] =
 {
-	{kParamType_WeatherID}
+	{"Weather ID", kParamType_WeatherID, 0}
 };
 
 constexpr ParamInfo kParams_OneWeatherID_OneString[] =
 {
-	{kParamType_WeatherID},
-	{kParamType_String}
+	{"Weather ID", kParamType_WeatherID, 0},
+	{"String", kParamType_String, 0}
 };
 
 constexpr ParamInfo kParams_OneWeatherID_OneInt_OneDouble[] =
 {
-	{kParamType_WeatherID},
-	{kParamType_Integer},
-	{kParamType_Double}
+	{"Weather ID", kParamType_WeatherID, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Double", kParamType_Double, 0}
 };
 
 constexpr ParamInfo kParams_OneWeatherID_TwoInts_OneOptionalInt[] =
 {
-	{kParamType_WeatherID},
-	{kParamType_Integer},
-	{kParamType_Integer},
-	{kParamType_Integer, 1}
+	{"Weather ID", kParamType_WeatherID, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneWeatherID_ThreeInts_OneOptionalInt[] =
 {
-	{kParamType_WeatherID},
-	{kParamType_Integer},
-	{kParamType_Integer},
-	{kParamType_Integer},
-	{kParamType_Integer, 1}
+	{"Weather ID", kParamType_WeatherID, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneForm_OneInt_OneString[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Integer},
-	{kParamType_String}
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"String", kParamType_String, 0}
 };
 
 constexpr ParamInfo kParams_OneForm_OneString[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_String}
+	{"Form", kParamType_AnyForm, 0},
+	{"String", kParamType_String, 0}
 };
 
 constexpr ParamInfo kParams_OneForm_OneWeatherID_OneInt_OneOptionalGlobal[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_WeatherID},
-	{kParamType_Integer},
-	{kParamType_Global, 1}
+	{"Form", kParamType_AnyForm, 0},
+	{"Weather ID", kParamType_WeatherID, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Global", kParamType_Global, 1}
 };
 
 constexpr ParamInfo kParams_OneForm_OneWeatherID[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_WeatherID}
+	{"Form", kParamType_AnyForm, 0},
+	{"Weather ID", kParamType_WeatherID, 0}
 };
 
 constexpr ParamInfo kParams_OneAxis_OneFloat[] =
 {
-	{kParamType_Axis},
-	{kParamType_Float}
+	{"Axis", kParamType_Axis, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_OneForm_ThreeInts[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Integer},
-	{kParamType_Integer},
-	{kParamType_Integer}
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneItemOrList_OneContainer_TwoOptionalInts[] =
 {
-	{kParamType_InvObjOrFormList},
-	{kParamType_Container},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1}
+	{"Item/List", kParamType_InvObjOrFormList, 0},
+	{"Container", kParamType_Container, 0},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneInt_OneFloat_OneOptionalActorBase[] =
 {
-	{kParamType_Integer},
-	{kParamType_Float},
-	{kParamType_ActorBase, 1}
+	{"Integer", kParamType_Integer, 0},
+	{"Float", kParamType_Float, 0},
+	{"Actor Base", kParamType_ActorBase, 1}
 };
 
 constexpr ParamInfo kParams_OneMagicItem_OneInt[] =
 {
-	{kParamType_MagicItem},
-	{kParamType_Integer}
+	{"Magic Item", kParamType_MagicItem, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneMagicItem_TwoInts[] =
 {
-	{kParamType_MagicItem},
-	{kParamType_Integer},
-	{kParamType_Integer}
+	{"Magic Item", kParamType_MagicItem, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneMagicItem_ThreeInts[] =
 {
-	{kParamType_MagicItem},
-	{kParamType_Integer},
-	{kParamType_Integer},
-	{kParamType_Integer}
+	{"Magic Item", kParamType_MagicItem, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneMagicItem_OneInt_OneMagicEffect[] =
 {
-	{kParamType_MagicItem},
-	{kParamType_Integer},
-	{kParamType_MagicEffect}
+	{"Magic Item", kParamType_MagicItem, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Magic Effect", kParamType_MagicEffect, 0}
 };
 
 constexpr ParamInfo kParams_OneOptionalQuest[] =
 {
-	{kParamType_Quest, 1}
+	{"Quest", kParamType_Quest, 1}
 };
 
 constexpr ParamInfo kParams_OneString_OneOptionalForm[] =
 {
-	{kParamType_String},
-	{kParamType_AnyForm, 1}
+	{"String", kParamType_String, 0},
+	{"Form", kParamType_AnyForm, 1}
 };
 
 constexpr ParamInfo kParams_OneString_OneOptionalInt_OneOptionalForm[] =
 {
-	{kParamType_String},
-	{kParamType_Integer, 1},
-	{kParamType_AnyForm, 1}
+	{"String", kParamType_String, 0},
+	{"Integer", kParamType_Integer, 1},
+	{"Form", kParamType_AnyForm, 1}
 };
 
 constexpr ParamInfo kParams_OneString_OneDouble_OneOptionalInt_OneOptionalForm[] =
 {
-	{kParamType_String},
-	{kParamType_Double},
-	{kParamType_Integer, 1},
-	{kParamType_AnyForm, 1}
+	{"String", kParamType_String, 0},
+	{"Double", kParamType_Double, 0},
+	{"Integer", kParamType_Integer, 1},
+	{"Form", kParamType_AnyForm, 1}
 };
 
 constexpr ParamInfo kParams_OneString_OneForm_OneOptionalInt_OneOptionalForm[] =
 {
-	{kParamType_String},
-	{kParamType_AnyForm},
-	{kParamType_Integer, 1},
-	{kParamType_AnyForm, 1}
+	{"String", kParamType_String, 0},
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 1},
+	{"Form", kParamType_AnyForm, 1}
 };
 
 constexpr ParamInfo kParams_TwoStrings_OneOptionalInt_OneOptionalForm[] =
 {
-	{kParamType_String},
-	{kParamType_String},
-	{kParamType_Integer, 1},
-	{kParamType_AnyForm, 1}
+	{"String", kParamType_String, 0},
+	{"String", kParamType_String, 0},
+	{"Integer", kParamType_Integer, 1},
+	{"Form", kParamType_AnyForm, 1}
 };
 
 constexpr ParamInfo kParams_OneInt_OneOptionalForm[] =
 {
-	{kParamType_Integer},
-	{kParamType_AnyForm, 1}
+	{"Integer", kParamType_Integer, 0},
+	{"Form", kParamType_AnyForm, 1}
 };
 
 constexpr ParamInfo kParams_OneString_OneInt_OneOptionalForm[] =
 {
-	{kParamType_String},
-	{kParamType_Integer},
-	{kParamType_AnyForm, 1}
+	{"String", kParamType_String, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Form", kParamType_AnyForm, 1}
 };
 
 constexpr ParamInfo kParams_OneString_OneDouble_OneOptionalForm[] =
 {
-	{kParamType_String},
-	{kParamType_Double},
-	{kParamType_AnyForm, 1}
+	{"String", kParamType_String, 0},
+	{"Double", kParamType_Double, 0},
+	{"Form", kParamType_AnyForm, 1}
 };
 
 constexpr ParamInfo kParams_OneString_OneForm_OneOptionalForm[] =
 {
-	{kParamType_String},
-	{kParamType_AnyForm},
-	{kParamType_AnyForm, 1}
+	{"String", kParamType_String, 0},
+	{"Form", kParamType_AnyForm, 0},
+	{"Form", kParamType_AnyForm, 1}
 };
 
 constexpr ParamInfo kParams_TwoStrings_OneOptionalForm[] =
 {
-	{kParamType_String},
-	{kParamType_String},
-	{kParamType_AnyForm, 1}
+	{"String", kParamType_String, 0},
+	{"String", kParamType_String, 0},
+	{"Form", kParamType_AnyForm, 1}
 };
 
 constexpr ParamInfo kParams_FourInts[] =
 {
-	{kParamType_Integer},
-	{kParamType_Integer},
-	{kParamType_Integer},
-	{kParamType_Integer}
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneForm_TwoInts_OneFloat[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Integer},
-	{kParamType_Integer},
-	{kParamType_Float}
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_OneForm_TwoInts_OneOptionalForm[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Integer},
-	{kParamType_Integer},
-	{kParamType_AnyForm, 1}
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Form", kParamType_AnyForm, 1}
 };
 
 constexpr ParamInfo kParams_OneForm_OneOptionalForm[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_AnyForm, 1}
+	{"Form", kParamType_AnyForm, 0},
+	{"Form", kParamType_AnyForm, 1}
 };
 
 constexpr ParamInfo kParams_OneSound[] =
 {
-	{kParamType_Sound}
+	{"Sound", kParamType_Sound, 0}
 };
 
 constexpr ParamInfo kParams_OneSound_OneString[] =
 {
-	{kParamType_Sound},
-	{kParamType_String}
+	{"Sound", kParamType_Sound, 0},
+	{"String", kParamType_String, 0}
 };
 
 constexpr ParamInfo kParams_OneWorldspace[] =
 {
-	{kParamType_WorldSpace}
+	{"Worldspace", kParamType_WorldSpace, 0}
 };
 
 constexpr ParamInfo kParams_OneWorldspace_OneOptionalForm[] =
 {
-	{kParamType_WorldSpace},
-	{kParamType_AnyForm, 1}
+	{"Worldspace", kParamType_WorldSpace, 0},
+	{"Form", kParamType_AnyForm, 1}
 };
 
 constexpr ParamInfo kParams_OneForm_OneOptionalActorBase[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_ActorBase, 1}
+	{"Form", kParamType_AnyForm, 0},
+	{"Actor Base", kParamType_ActorBase, 1}
 };
 
 constexpr ParamInfo kParams_OneInt_OneFloat[] =
 {
-	{kParamType_Integer},
-	{kParamType_Float}
+	{"Integer", kParamType_Integer, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_OneInt_OneFormatString[] =
 {
-	{kParamType_Integer},
+	{"Integer", kParamType_Integer, 0},
 	FORMAT_STRING_PARAMS
 };
 
 constexpr ParamInfo kParams_TwoInts_OneOptionalInt[] =
 {
-	{kParamType_Integer},
-	{kParamType_Integer},
-	{kParamType_Integer, 1}
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneObjectRef_OneOptionalInt[] =
 {
-	{kParamType_ObjectRef},
-	{kParamType_Integer, 1}
+	{"Object Ref", kParamType_ObjectRef, 0},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneList_TwoOptionalInts[] =
 {
-	{kParamType_FormList},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1}
+	{"List", kParamType_FormList, 0},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneFaction_OneOptionalInt[] =
 {
-	{kParamType_Faction},
-	{kParamType_Integer, 1}
+	{"Faction", kParamType_Faction, 0},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneQuest_OneInt[] =
 {
-	{kParamType_Quest},
-	{kParamType_Integer}
+	{"Quest", kParamType_Quest, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneWorldspace_OneInt[] =
 {
-	{kParamType_WorldSpace},
-	{kParamType_Integer}
+	{"Worldspace", kParamType_WorldSpace, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneWorldspace_TwoInts[] =
 {
-	{kParamType_WorldSpace},
-	{kParamType_Integer},
-	{kParamType_Integer}
+	{"Worldspace", kParamType_WorldSpace, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneString_OneInt_OneOptionalActorBase[] =
 {
-	{kParamType_String},
-	{kParamType_Integer},
-	{kParamType_ActorBase, 1}
+	{"String", kParamType_String, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Actor Base", kParamType_ActorBase, 1}
 };
 
 constexpr ParamInfo kParams_OneString_OneOptionalActorBase[] =
 {
-	{kParamType_String},
-	{kParamType_ActorBase, 1}
+	{"String", kParamType_String, 0},
+	{"Actor Base", kParamType_ActorBase, 1}
 };
 
 constexpr ParamInfo kParams_OneObjectRef[] =
 {
-	{kParamType_ObjectRef}
+	{"Object Ref", kParamType_ObjectRef, 0}
 };
 
 constexpr ParamInfo kParams_OneInt_ThreeFloats[] =
 {
-	{kParamType_Integer},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float}
+	{"Integer", kParamType_Integer, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_OneMagicItem_OneEffect_TwoInts_ThreeOptionalInts[] =
 {
-	{kParamType_MagicItem},
-	{kParamType_MagicEffect},
-	{kParamType_Integer},
-	{kParamType_Integer},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1}
+	{"Magic Item", kParamType_MagicItem, 0},
+	{"Magic Effect", kParamType_MagicEffect, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneItemOrList_TwoOptionalInts[] =
 {
-	{kParamType_InvObjOrFormList},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1}
+	{"Item/List", kParamType_InvObjOrFormList, 0},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_TwoOptionalInts[] =
 {
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1}
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneActorValue_OneFloat_OneOptionalActorBase[] =
 {
-	{kParamType_ActorValue},
-	{kParamType_Float},
-	{kParamType_ActorBase, 1}
+	{"Actor Value", kParamType_ActorValue, 0},
+	{"Float", kParamType_Float, 0},
+	{"Actor Base", kParamType_ActorBase, 1}
 };
 
 constexpr ParamInfo kParams_OneFloat_OneFormatString[] =
 {
-	{kParamType_Float},
+	{"Float", kParamType_Float, 0},
 	FORMAT_STRING_PARAMS
 };
 
 constexpr ParamInfo kParams_OneForm_OneFormatString[] =
 {
-	{kParamType_AnyForm},
+	{"Form", kParamType_AnyForm, 0},
 	FORMAT_STRING_PARAMS
 };
 
 constexpr ParamInfo kParams_OneInt_OneString[] =
 {
-	{kParamType_Integer},
-	{kParamType_String}
+	{"Integer", kParamType_Integer, 0},
+	{"String", kParamType_String, 0}
 };
 
 constexpr ParamInfo kParams_OneForm_TwoFloats_OneFormatString[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Float},
-	{kParamType_Float},
+	{"Form", kParamType_AnyForm, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
 	FORMAT_STRING_PARAMS
 };
 
 constexpr ParamInfo kParams_OneActor_OneTopic_TwoOptionalInts[] =
 {
-	{kParamType_Actor},
-	{kParamType_Topic},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1}
+	{"Actor", kParamType_Actor, 0},
+	{"Topic", kParamType_Topic, 0},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneTopic[] =
 {
-	{kParamType_Topic}
+	{"Topic", kParamType_Topic, 0}
 };
 
 constexpr ParamInfo kParams_OneForm_ThreeFloats[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float}
+	{"Form", kParamType_AnyForm, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_FourOptionalInts_OneOptionalList[] =
 {
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1},
-	{kParamType_FormList, 1}
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1},
+	{"List", kParamType_FormList, 1}
 };
 
 constexpr ParamInfo kParams_OneInt_OneOptionalActor[] =
 {
-	{kParamType_Integer},
-	{kParamType_Actor, 1}
+	{"Integer", kParamType_Integer, 0},
+	{"Actor", kParamType_Actor, 1}
 };
 
 constexpr ParamInfo kParams_OneObjectID_OneActorValue[] =
 {
-	{kParamType_ObjectID},
-	{kParamType_ActorValue}
+	{"Object ID", kParamType_ObjectID, 0},
+	{"Actor Value", kParamType_ActorValue, 0}
 };
 
 constexpr ParamInfo kParams_OneMessage[] =
 {
-	{kParamType_Message}
+	{"Message", kParamType_Message, 0}
 };
 
 constexpr ParamInfo kParams_OneMessage_OneInt[2] =
 {
-	{kParamType_Message},
-	{kParamType_Integer},
+	{"Message", kParamType_Message, 0},
+	{"Integer", kParamType_Integer, 0},
 };
 
 constexpr ParamInfo kParams_OneSound_OneOptionalObjectRef[] =
 {
-	{kParamType_Sound},
-	{kParamType_ObjectRef, 1}
+	{"Sound", kParamType_Sound, 0},
+	{"Object Ref", kParamType_ObjectRef, 1}
 };
 
 constexpr ParamInfo kParams_OneObjectRef_TwoStrings_OneOtionalInt[] =
 {
-	{kParamType_ObjectRef},
-	{kParamType_String},
-	{kParamType_String},
-	{kParamType_Integer, 1}
+	{"Object Ref", kParamType_ObjectRef, 0},
+	{"String", kParamType_String, 0},
+	{"String", kParamType_String, 0},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneString_OneInt[] =
 {
-	{kParamType_String},
-	{kParamType_Integer}
+	{"String", kParamType_String, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneString_OneInt_OneFloat[] =
 {
-	{kParamType_String},
-	{kParamType_Integer},
-	{kParamType_Float}
+	{"String", kParamType_String, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_OneForm_OneInt_OneForm_OneInt[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Integer},
-	{kParamType_AnyForm},
-	{kParamType_Integer}
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneForm_OneInt_OneForm_OneAnimGroup[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Integer},
-	{kParamType_AnyForm},
-	{kParamType_AnimationGroup}
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Form", kParamType_AnyForm, 0},
+	{"Anim Group", kParamType_AnimationGroup, 0}
 };
 
 constexpr ParamInfo kParams_OneForm_OneInt_OneForm[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Integer},
-	{kParamType_AnyForm}
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Form", kParamType_AnyForm, 0}
 };
 
 constexpr ParamInfo kParams_OneActorValue_OneOptionalActorBase[] =
 {
-	{kParamType_ActorValue},
-	{kParamType_ActorBase, 1}
+	{"Actor Value", kParamType_ActorValue, 0},
+	{"Actor Base", kParamType_ActorBase, 1}
 };
 
 constexpr ParamInfo kParams_ThreeFloats[] =
 {
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float}
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_OneOptionalAxis[] =
 {
-	{kParamType_Axis, 1}
+	{"Axis", kParamType_Axis, 1}
 };
 
 constexpr ParamInfo kParams_OnePerk_OneInt[] =
 {
-	{kParamType_Perk},
-	{kParamType_Integer}
+	{"Perk", kParamType_Perk, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OnePerk_TwoInts[] =
 {
-	{kParamType_Perk},
-	{kParamType_Integer},
-	{kParamType_Integer}
+	{"Perk", kParamType_Perk, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneList_OneInt_TwoOptionalInts[] =
 {
-	{kParamType_FormList},
-	{kParamType_Integer},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1}
+	{"List", kParamType_FormList, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneString_OneOptionalInt[] =
 {
-	{kParamType_String},
-	{kParamType_Integer, 1}
+	{"String", kParamType_String, 0},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_ThreeForms[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_AnyForm},
-	{kParamType_AnyForm}
+	{"Form", kParamType_AnyForm, 0},
+	{"Form", kParamType_AnyForm, 0},
+	{"Form", kParamType_AnyForm, 0}
 };
 
 constexpr ParamInfo kParams_TwoForms_TwoInts_OneFloat[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_AnyForm},
-	{kParamType_Integer},
-	{kParamType_Integer},
-	{kParamType_Float}
+	{"Form", kParamType_AnyForm, 0},
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_OneForm_OneInt_OneFloat_OneOptionalForm[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Integer},
-	{kParamType_Float},
-	{kParamType_AnyForm, 1}
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Float", kParamType_Float, 0},
+	{"Form", kParamType_AnyForm, 1}
 };
 
 constexpr ParamInfo kParams_OneInt_TwoOptionalInts[] =
 {
-	{kParamType_Integer},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1}
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneObjectID_OneOptionalFloat_ThreeOptionalInts[] =
 {
-	{kParamType_ObjectID},
-	{kParamType_Float, 1},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1}
+	{"Object ID", kParamType_ObjectID, 0},
+	{"Float", kParamType_Float, 1},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneFloat_OneOptionalForm[] =
 {
-	{kParamType_Float},
-	{kParamType_AnyForm, 1}
+	{"Float", kParamType_Float, 0},
+	{"Form", kParamType_AnyForm, 1}
 };
 
 constexpr ParamInfo kParams_OneInt_OneForm_OneOptionalFloat_OneOptionalInt[] =
 {
-	{kParamType_Integer},
-	{kParamType_AnyForm},
-	{kParamType_Float, 1},
-	{kParamType_Integer, 1}
+	{"Integer", kParamType_Integer, 0},
+	{"Form", kParamType_AnyForm, 0},
+	{"Float", kParamType_Float, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneForm_OneOptionalInt[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Integer, 1}
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneForm_OneInt_OneOptionalInt[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Integer},
-	{kParamType_Integer, 1}
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_TwoForms_OneInt[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_AnyForm},
-	{kParamType_Integer}
+	{"Form", kParamType_AnyForm, 0},
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_FormCondition[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Integer},
-	{kParamType_AnyForm},
-	{kParamType_Integer},
-	{kParamType_Float}
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_OneString_OneOptionalString[] =
 {
-	{kParamType_String},
-	{kParamType_String, 1}
+	{"String", kParamType_String, 0},
+	{"String", kParamType_String, 1}
 };
 
 constexpr ParamInfo kParams_OneString_OneDouble_OneOptionalString[] =
 {
-	{kParamType_String},
-	{kParamType_Double},
-	{kParamType_String, 1}
+	{"String", kParamType_String, 0},
+	{"Double", kParamType_Double, 0},
+	{"String", kParamType_String, 1}
 };
 
 constexpr ParamInfo kParams_TwoString_OneOptionalString[] =
 {
-	{kParamType_String},
-	{kParamType_String},
-	{kParamType_String, 1}
+	{"String", kParamType_String, 0},
+	{"String", kParamType_String, 0},
+	{"String", kParamType_String, 1}
 };
 
 constexpr ParamInfo kParams_OneString_OneInt_OneOptionalString[] =
 {
-	{kParamType_String},
-	{kParamType_Integer},
-	{kParamType_String, 1}
+	{"String", kParamType_String, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"String", kParamType_String, 1}
 };
 
 constexpr ParamInfo kParams_OneOptionalString[] =
 {
-	{kParamType_String, 1}
+	{"String", kParamType_String, 1}
 };
 
 constexpr ParamInfo kParams_OneInt_OneOptionalObjectRef[] =
 {
-	{kParamType_Integer},
-	{kParamType_ObjectRef, 1}
+	{"Integer", kParamType_Integer, 0},
+	{"Object Ref", kParamType_ObjectRef, 1}
 };
 
 constexpr ParamInfo kParams_OneActorBase[] =
 {
-	{kParamType_ActorBase}
+	{"Actor Base", kParamType_ActorBase, 0}
 };
 
 constexpr ParamInfo kParams_OneActorBase_OneInt[] =
 {
-	{kParamType_ActorBase},
-	{kParamType_Integer}
+	{"Actor Base", kParamType_ActorBase, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneActorBase_TwoInts[] =
 {
-	{kParamType_ActorBase},
-	{kParamType_Integer},
-	{kParamType_Integer}
+	{"Actor Base", kParamType_ActorBase, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_TwoInts_OneOptionalActorBase[] =
 {
-	{kParamType_Integer},
-	{kParamType_Integer},
-	{kParamType_ActorBase, 1}
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Actor Base", kParamType_ActorBase, 1}
 };
 
 constexpr ParamInfo kParams_OneFaction_OneInt_OneOptionalActorBase[] =
 {
-	{kParamType_Faction},
-	{kParamType_Integer},
-	{kParamType_ActorBase, 1}
+	{"Faction", kParamType_Faction, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Actor Base", kParamType_ActorBase, 1}
 };
 
 constexpr ParamInfo kParams_OneImageSpace_OneInt[] =
 {
-	{kParamType_ImageSpace},
-	{kParamType_Integer}
+	{"Image Space", kParamType_ImageSpace, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneImageSpace_OneInt_OneFloat[] =
 {
-	{kParamType_ImageSpace},
-	{kParamType_Integer},
-	{kParamType_Float}
+	{"Image Space", kParamType_ImageSpace, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_OneIMOD_OneInt[] =
 {
-	{kParamType_ImageSpaceModifier},
-	{kParamType_Integer}
+	{"IMOD", kParamType_ImageSpaceModifier, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneIMOD_OneInt_OneFloat[] =
 {
-	{kParamType_ImageSpaceModifier},
-	{kParamType_Integer},
-	{kParamType_Float}
+	{"IMOD", kParamType_ImageSpaceModifier, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Float", kParamType_Float, 0}
 };
 
-constexpr ParamInfo kParams_OneForm_ThreeOptionalInts[] =
+constexpr ParamInfo kParams_OneForm_OneInt_TwoOptionalInts[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1}
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneGlobal_OneOptionalForm[] =
 {
-	{kParamType_Global},
-	{kParamType_AnyForm, 1}
+	{"Global", kParamType_Global, 0},
+	{"Form", kParamType_AnyForm, 1}
 };
 
 constexpr ParamInfo kParams_TwoOptionalInts_OneOptionalContainer[] =
 {
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1},
-	{kParamType_Container, 1}
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1},
+	{"Container", kParamType_Container, 1}
 };
 
 constexpr ParamInfo kParams_OneForm_OneString_OneInt[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_String},
-	{kParamType_Integer}
+	{"Form", kParamType_AnyForm, 0},
+	{"String", kParamType_String, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneMagicItem[] =
 {
-	{kParamType_MagicItem}
+	{"Magic Item", kParamType_MagicItem, 0}
 };
 
 constexpr ParamInfo kParams_FourOptionalFloats_OneOptionalInt[] =
 {
-	{kParamType_Float, 1},
-	{kParamType_Float, 1},
-	{kParamType_Float, 1},
-	{kParamType_Float, 1},
-	{kParamType_Integer, 1}
+	{"Float", kParamType_Float, 1},
+	{"Float", kParamType_Float, 1},
+	{"Float", kParamType_Float, 1},
+	{"Float", kParamType_Float, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneInt_OneFloat_TwoOptionalForms[] =
 {
-	{kParamType_Integer},
-	{kParamType_Float},
-	{kParamType_AnyForm, 1},
-	{kParamType_AnyForm, 1}
+	{"Integer", kParamType_Integer, 0},
+	{"Float", kParamType_Float, 0},
+	{"Form", kParamType_AnyForm, 1},
+	{"Form", kParamType_AnyForm, 1}
 };
 
 constexpr ParamInfo kParams_OneForm_OneInt_OneQuest_OneInt_OneOptionalInt[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Integer},
-	{kParamType_Quest},
-	{kParamType_Integer},
-	{kParamType_Integer, 1}
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Quest", kParamType_Quest, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneForm_OneInt_ThreeOptionalForms[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Integer},
-	{kParamType_AnyForm, 1},
-	{kParamType_AnyForm, 1},
-	{kParamType_AnyForm, 1}
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Form", kParamType_AnyForm, 1},
+	{"Form", kParamType_AnyForm, 1},
+	{"Form", kParamType_AnyForm, 1}
 };
 
 constexpr ParamInfo kParams_OneObjectID_OneInt_OneFormatString[] =
 {
-	{kParamType_ObjectID},
-	{kParamType_Integer},
+	{"Object ID", kParamType_ObjectID, 0},
+	{"Integer", kParamType_Integer, 0},
 	FORMAT_STRING_PARAMS
 };
 
 constexpr ParamInfo kParams_OneOptionalObjectRef_TwoOptionalInts[] =
 {
-	{kParamType_ObjectRef, 1},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1}
+	{"Object Ref", kParamType_ObjectRef, 1},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneObjectRef_OneFloat[] =
 {
-	{kParamType_ObjectRef},
-	{kParamType_Float}
+	{"Object Ref", kParamType_ObjectRef, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_OneQuest_TwoInts_OneObjectRef[] =
 {
-	{kParamType_Quest},
-	{kParamType_Integer},
-	{kParamType_Integer},
-	{kParamType_ObjectRef}
+	{"Quest", kParamType_Quest, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Object Ref", kParamType_ObjectRef, 0}
 };
 
 constexpr ParamInfo kParams_OneQuest_OneInt_OneObjectRef[] =
 {
-	{kParamType_Quest},
-	{kParamType_Integer},
-	{kParamType_ObjectRef}
+	{"Quest", kParamType_Quest, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Object Ref", kParamType_ObjectRef, 0}
 };
 
 constexpr ParamInfo kParams_OneQuest_OneInt_OneFormatString[] =
 {
-	{kParamType_Quest},
-	{kParamType_Integer},
+	{"Quest", kParamType_Quest, 0},
+	{"Integer", kParamType_Integer, 0},
 	FORMAT_STRING_PARAMS
 };
 
 constexpr ParamInfo kParams_OneObjectID_OneOptionalObjectID[] =
 {
-	{kParamType_ObjectID},
-	{kParamType_ObjectID, 1}
+	{"Object ID", kParamType_ObjectID, 0},
+	{"Object ID", kParamType_ObjectID, 1}
 };
 
 constexpr ParamInfo kParams_OneForm_OneOptionalString[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_String, 1}
+	{"Form", kParamType_AnyForm, 0},
+	{"String", kParamType_String, 1}
 };
 
 constexpr ParamInfo kParams_OneSpellItem_OneOptionalActorBase[] =
 {
-	{kParamType_SpellItem},
-	{kParamType_ActorBase, 1}
+	{"Spell Item", kParamType_SpellItem, 0},
+	{"Actor Base", kParamType_ActorBase, 1}
 };
 
 constexpr ParamInfo kParams_OneMagicItem_OneOptionalActor[] =
 {
-	{kParamType_MagicItem},
-	{kParamType_Actor, 1}
+	{"Magic Item", kParamType_MagicItem, 0},
+	{"Actor", kParamType_Actor, 1}
 };
 
 constexpr ParamInfo kParams_ThreeOptionalInts[] =
 {
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1}
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneAIPackage_ThreeInts[] =
 {
-	{kParamType_AIPackage},
-	{kParamType_Integer},
-	{kParamType_Integer},
-	{kParamType_Integer}
+	{"Package", kParamType_AIPackage, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneForm_OneInt_OneDouble[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Integer},
-	{kParamType_Double}
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Double", kParamType_Double, 0}
 };
 
 constexpr ParamInfo kParams_OneDouble[] =
 {
-	{kParamType_Double}
+	{"Double", kParamType_Double, 0}
 };
 
 constexpr ParamInfo kParams_FourFloats_OneOptionalObjectRef[] =
 {
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_ObjectRef, 1}
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Object Ref", kParamType_ObjectRef, 1}
 };
 
 constexpr ParamInfo kParams_OneActorBase_OneOptionalString[] =
 {
-	{kParamType_ActorBase},
-	{kParamType_String, 1}
+	{"Actor Base", kParamType_ActorBase, 0},
+	{"String", kParamType_String, 1}
 };
 
 constexpr ParamInfo kParams_OneActorBase_OneString[] =
 {
-	{kParamType_ActorBase},
-	{kParamType_String}
+	{"Actor Base", kParamType_ActorBase, 0},
+	{"String", kParamType_String, 0}
 };
 
 constexpr ParamInfo kParams_OneActorBase_OneForm[] =
 {
-	{kParamType_ActorBase},
-	{kParamType_AnyForm}
+	{"Actor Base", kParamType_ActorBase, 0},
+	{"Form", kParamType_AnyForm, 0}
 };
 
 constexpr ParamInfo kParams_OneString_ThreeFloats_OneOptionalInt[] =
 {
-	{kParamType_String},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Integer, 1}
+	{"String", kParamType_String, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneString_ThreeFloats_TwoOptionalInts[] =
 {
-	{kParamType_String},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1}
+	{"String", kParamType_String, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneString_OneOptionalAxis[] =
 {
-	{kParamType_String},
-	{kParamType_Axis, 1}
+	{"String", kParamType_String, 0},
+	{"Axis", kParamType_Axis, 1}
 };
 
 constexpr ParamInfo kParams_OneString_OneAxis_OneFloat[] =
 {
-	{kParamType_String},
-	{kParamType_Axis},
-	{kParamType_Float}
+	{"String", kParamType_String, 0},
+	{"Axis", kParamType_Axis, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_OneForm_OneInt_OneForm_ThreeFloats[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Integer},
-	{kParamType_AnyForm},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float}
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Form", kParamType_AnyForm, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_OneActorValue_OneOptionalInt[] =
 {
-	{kParamType_ActorValue},
-	{kParamType_Integer, 1}
+	{"Actor Value", kParamType_ActorValue, 0},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_ThreeGlobals_OneOptFloat_OneOptInt_OneOptString_OneOptFloat[] =
 {
-	{kParamType_Global},
-	{kParamType_Global},
-	{kParamType_Global},
-	{kParamType_Float, 1},
-	{kParamType_Integer, 1},
-	{kParamType_String, 1},
-	{kParamType_Float, 1}
+	{"Global", kParamType_Global, 0},
+	{"Global", kParamType_Global, 0},
+	{"Global", kParamType_Global, 0},
+	{"Float", kParamType_Float, 1},
+	{"Integer", kParamType_Integer, 1},
+	{"String", kParamType_String, 1},
+	{"Float", kParamType_Float, 1}
 };
 
 constexpr ParamInfo kParams_OneObjectRef_OneString_ThreeOptionalFloats[] =
 {
-	{kParamType_ObjectRef},
-	{kParamType_String},
-	{kParamType_Float, 1},
-	{kParamType_Float, 1},
-	{kParamType_Float, 1}
+	{"Object Ref", kParamType_ObjectRef, 0},
+	{"String", kParamType_String, 0},
+	{"Float", kParamType_Float, 1},
+	{"Float", kParamType_Float, 1},
+	{"Float", kParamType_Float, 1}
 };
 
 constexpr ParamInfo kParams_OneObjectID_OneOptionalActorBase[] =
 {
-	{kParamType_ObjectID},
-	{kParamType_ActorBase, 1}
+	{"Object ID", kParamType_ObjectID, 0},
+	{"Actor Base", kParamType_ActorBase, 1}
 };
 
 constexpr ParamInfo kParams_OneString_OneForm_ThreeOptionalFloats[] =
 {
-	{kParamType_String},
-	{kParamType_AnyForm},
-	{kParamType_Float, 1},
-	{kParamType_Float, 1},
-	{kParamType_Float, 1}
+	{"String", kParamType_String, 0},
+	{"Form", kParamType_AnyForm, 0},
+	{"Float", kParamType_Float, 1},
+	{"Float", kParamType_Float, 1},
+	{"Float", kParamType_Float, 1}
 };
 
 constexpr ParamInfo kParams_OneEffect[] =
 {
-	{kParamType_MagicEffect}
+	{"Magic Effect", kParamType_MagicEffect, 0}
 };
 
 constexpr ParamInfo kParams_OneQuest_TwoInts[] =
 {
-	{kParamType_Quest},
-	{kParamType_Integer},
-	{kParamType_Integer}
+	{"Quest", kParamType_Quest, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneFloat_ThreeOptionalFloats_OneOptionalInt[] =
 {
-	{kParamType_Float},
-	{kParamType_Float, 1},
-	{kParamType_Float, 1},
-	{kParamType_Float, 1},
-	{kParamType_Integer, 1}
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 1},
+	{"Float", kParamType_Float, 1},
+	{"Float", kParamType_Float, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneString_OneOptionalString_OneOptionalInt[] =
 {
-	{kParamType_String},
-	{kParamType_String, 1},
-	{kParamType_Integer, 1}
+	{"String", kParamType_String, 0},
+	{"String", kParamType_String, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneObjectRef_OneFloat_OneOptionalInt[] =
 {
-	{kParamType_ObjectRef},
-	{kParamType_Float},
-	{kParamType_Integer, 1}
+	{"Object Ref", kParamType_ObjectRef, 0},
+	{"Float", kParamType_Float, 0},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneObjectID_OneInt_OneFloat[] =
 {
-	{kParamType_ObjectID},
-	{kParamType_Integer},
-	{kParamType_Float}
+	{"Object ID", kParamType_ObjectID, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_TwoFloats_ThreeOptionalInts[] =
 {
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1}
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneNote[] =
 {
-	{kParamType_Note}
+	{"Note", kParamType_Note, 0}
 };
 
 constexpr ParamInfo kParams_OneForm_OneOptionalSpellItem[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_SpellItem, 1}
+	{"Form", kParamType_AnyForm, 0},
+	{"Spell Item", kParamType_SpellItem, 1}
 };
 
 constexpr ParamInfo kParams_TwoFloats_OneOptionalObjectRef_OneOptionalInt[] =
 {
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_ObjectRef, 1},
-	{kParamType_Integer, 1}
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Object Ref", kParamType_ObjectRef, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneString_ThreeOptionalFloats_OneOptionalInt[] =
 {
-	{kParamType_String},
-	{kParamType_Float, 1},
-	{kParamType_Float, 1},
-	{kParamType_Float, 1},
-	{kParamType_Integer, 1}
+	{"String", kParamType_String, 0},
+	{"Float", kParamType_Float, 1},
+	{"Float", kParamType_Float, 1},
+	{"Float", kParamType_Float, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneForm_OneInt_OneFormatString[] =
 {
-	{kParamType_AnyForm},
-	{kParamType_Integer},
+	{"Form", kParamType_AnyForm, 0},
+	{"Integer", kParamType_Integer, 0},
 	FORMAT_STRING_PARAMS
 };
 
 constexpr ParamInfo kParams_OneOptionalObjectRef_OneOptionalInt_OneOptionalFloat_OneOptionalString[] =
 {
-	{kParamType_ObjectRef, 1},
-	{kParamType_Integer, 1},
-	{kParamType_Float, 1},
-	{kParamType_String, 1}
+	{"Object Ref", kParamType_ObjectRef, 1},
+	{"Integer", kParamType_Integer, 1},
+	{"Float", kParamType_Float, 1},
+	{"String", kParamType_String, 1}
 };
 
 constexpr ParamInfo kParams_OneOptionalInt_OneOptionalString[] =
 {
-	{kParamType_Integer, 1},
-	{kParamType_String, 1}
+	{"Integer", kParamType_Integer, 1},
+	{"String", kParamType_String, 1}
 };
 
 constexpr ParamInfo kParams_OneObjectID_OneOptionalString[] =
 {
-	{kParamType_ObjectID},
-	{kParamType_String, 1}
+	{"Object ID", kParamType_ObjectID, 0},
+	{"String", kParamType_String, 1}
 };
 
 constexpr ParamInfo kParams_OneString_OneDouble[] =
 {
-	{kParamType_String},
-	{kParamType_Double}
+	{"String", kParamType_String, 0},
+	{"Double", kParamType_Double, 0}
 };
 
 constexpr ParamInfo kParams_TwoScriptVars[] =
 {
-	{kParamType_ScriptVariable},
-	{kParamType_ScriptVariable}
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Variable", kParamType_ScriptVariable, 0}
 };
 
 constexpr ParamInfo kParams_OneString_OneFloat_OneOptionalInt[] =
 {
-	{kParamType_String},
-	{kParamType_Float},
-	{kParamType_Integer, 1}
+	{"String", kParamType_String, 0},
+	{"Float", kParamType_Float, 0},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneString_OneInt_OneOptionalInt[] =
 {
-	{kParamType_String},
-	{kParamType_Integer},
-	{kParamType_Integer, 1}
+	{"String", kParamType_String, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneString_TwoInts_OneOptionalInt[] =
 {
-	{kParamType_String},
-	{kParamType_Integer},
-	{kParamType_Integer},
-	{kParamType_Integer, 1}
+	{"String", kParamType_String, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneOptionalFloat_OneOptionalInt[] =
 {
-	{kParamType_Float, 1},
-	{kParamType_Integer, 1}
+	{"Float", kParamType_Float, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneOptionalString_TwoOptionalInts[] =
 {
-	{kParamType_String, 1},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1}
+	{"String", kParamType_String, 1},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_ThreeScriptVars[] =
 {
-	{kParamType_ScriptVariable},
-	{kParamType_ScriptVariable},
-	{kParamType_ScriptVariable}
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Variable", kParamType_ScriptVariable, 0}
 };
 
 constexpr ParamInfo kParams_ThreeScriptVars_OneOptionalInt[] =
 {
-	{kParamType_ScriptVariable},
-	{kParamType_ScriptVariable},
-	{kParamType_ScriptVariable},
-	{kParamType_Integer, 1}
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneString_TwoInts_OneFloat[] =
 {
-	{kParamType_String},
-	{kParamType_Integer},
-	{kParamType_Integer},
-	{kParamType_Float}
+	{"String", kParamType_String, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_TwoStrings_OneFloat_ThreeOptionalInts[] =
 {
-	{kParamType_String},
-	{kParamType_String},
-	{kParamType_Float},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1}
+	{"String", kParamType_String, 0},
+	{"String", kParamType_String, 0},
+	{"Float", kParamType_Float, 0},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_TwoStrings_OneOptionalInt[] =
 {
-	{kParamType_String},
-	{kParamType_String},
-	{kParamType_Integer, 1}
+	{"String", kParamType_String, 0},
+	{"String", kParamType_String, 0},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OnePerk[] =
 {
-	{kParamType_Perk}
+	{"Perk", kParamType_Perk, 0}
 };
 
 constexpr ParamInfo kParams_OneChallenge[] =
 {
-	{kParamType_Challenge}
+	{"Challenge", kParamType_Challenge, 0}
 };
 
 constexpr ParamInfo kParams_OneChallenge_OneInt[] =
 {
-	{kParamType_Challenge},
-	{kParamType_Integer}
+	{"Challenge", kParamType_Challenge, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneChallenge_OneForm[] =
 {
-	{kParamType_Challenge},
-	{kParamType_AnyForm}
+	{"Challenge", kParamType_Challenge, 0},
+	{"Form", kParamType_AnyForm, 0}
 };
 
 constexpr ParamInfo kParams_OneCasino[] =
 {
-	{kParamType_Casino}
+	{"Casino", kParamType_Casino, 0}
 };
 
 constexpr ParamInfo kParams_OneCasino_OneInt[] =
 {
-	{kParamType_Casino},
-	{kParamType_Integer}
+	{"Casino", kParamType_Casino, 0},
+	{"Integer", kParamType_Integer, 0}
 };
 
 constexpr ParamInfo kParams_OneCasino_OneFloat[] =
 {
-	{kParamType_Casino},
-	{kParamType_Float}
+	{"Casino", kParamType_Casino, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_FiveFloats_ThreeScriptVars_OneOptionalInt_OneOptionalFloat[] =
 {
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_ScriptVariable},
-	{kParamType_ScriptVariable},
-	{kParamType_ScriptVariable},
-	{kParamType_Integer, 1},
-	{kParamType_Float, 1}
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Integer", kParamType_Integer, 1},
+	{"Float", kParamType_Float, 1}
 };
 
 constexpr ParamInfo kParams_ThreeFloats_OneOptionalInt[] =
 {
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Integer, 1}
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_ThreeFloats_ThreeScriptVars[] =
 {
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_ScriptVariable},
-	{kParamType_ScriptVariable},
-	{kParamType_ScriptVariable}
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Variable", kParamType_ScriptVariable, 0}
 };
 
 constexpr ParamInfo kParams_OneIdleForm[] =
 {
-	{kParamType_IdleForm}
+	{"Idle Form", kParamType_IdleForm, 0}
 };
 
 constexpr ParamInfo kParams_OneOptionalIdleForm[] =
 {
-	{kParamType_IdleForm, 1}
+	{"Idle Form", kParamType_IdleForm, 1}
 };
 
 constexpr ParamInfo kParams_OneOptionalInt_OneOptionalFloat[] =
 {
-	{kParamType_Integer, 1},
-	{kParamType_Float, 1}
+	{"Integer", kParamType_Integer, 1},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_OneString_ThreeScriptVars_TwoOptionalInts[] =
 {
-	{kParamType_String},
-	{kParamType_ScriptVariable},
-	{kParamType_ScriptVariable},
-	{kParamType_ScriptVariable},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1}
+	{"String", kParamType_String, 0},
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneString_ThreeScriptVars_OneOptionalInt[] =
 {
-	{kParamType_String},
-	{kParamType_ScriptVariable},
-	{kParamType_ScriptVariable},
-	{kParamType_ScriptVariable},
-	{kParamType_Integer, 1}
+	{"String", kParamType_String, 0},
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneString_SixFloats_OneOptionalFloat[] =
 {
-	{kParamType_String},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float, 1}
+	{"String", kParamType_String, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 1}
 };
 
 constexpr ParamInfo kParams_TwoStrings_FourFloats[] =
 {
-	{kParamType_String},
-	{kParamType_String},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float}
+	{"String", kParamType_String, 0},
+	{"String", kParamType_String, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_TwoStrings_FiveFloats[] =
 {
-	{kParamType_String},
-	{kParamType_String},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float}
+	{"String", kParamType_String, 0},
+	{"String", kParamType_String, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0}
 };
 
 constexpr ParamInfo kParams_OneOptionalFloat[] =
 {
-	{kParamType_Float, 1}
+	{"Float", kParamType_Float, 1}
 };
 
 constexpr ParamInfo kParams_ThreeScriptVars_OneOptionalInt_OneOptionalFloat[] =
 {
-	{kParamType_ScriptVariable},
-	{kParamType_ScriptVariable},
-	{kParamType_ScriptVariable},
-	{kParamType_Integer, 1},
-	{kParamType_Float, 1}
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Integer", kParamType_Integer, 1},
+	{"Float", kParamType_Float, 1}
 };
 
 constexpr ParamInfo kParams_NineFloats_TwoScriptVars[] =
 {
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_ScriptVariable},
-	{kParamType_ScriptVariable}
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Variable", kParamType_ScriptVariable, 0}
 };
 
 constexpr ParamInfo kParams_SixFloats_TwoScriptVars[] =
 {
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_ScriptVariable},
-	{kParamType_ScriptVariable}
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Variable", kParamType_ScriptVariable, 0}
 };
 
 constexpr ParamInfo kParams_SixFloats_OneOptionalInt[] =
 {
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Float},
-	{kParamType_Integer, 1}
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Float", kParamType_Float, 0},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneString_OneInt_OneFloat_ThreeScriptVars[] =
 {
-	{kParamType_String},
-	{kParamType_Integer},
-	{kParamType_Float},
-	{kParamType_ScriptVariable},
-	{kParamType_ScriptVariable},
-	{kParamType_ScriptVariable}
+	{"String", kParamType_String, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"Float", kParamType_Float, 0},
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Variable", kParamType_ScriptVariable, 0}
 };
 
 constexpr ParamInfo kParams_OneString_OneInt_OneOptionalString_OneOptionalInt[] =
 {
-	{kParamType_String},
-	{kParamType_Integer},
-	{kParamType_String, 1},
-	{kParamType_Integer, 1}
+	{"String", kParamType_String, 0},
+	{"Integer", kParamType_Integer, 0},
+	{"String", kParamType_String, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneFloat_OneOptionalInt[] =
 {
-	{kParamType_Float},
-	{kParamType_Integer, 1}
+	{"Float", kParamType_Float, 0},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_ThreeScriptVars_ThreeOptionalScriptVars[] =
 {
-	{kParamType_ScriptVariable},
-	{kParamType_ScriptVariable},
-	{kParamType_ScriptVariable},
-	{kParamType_ScriptVariable, 1},
-	{kParamType_ScriptVariable, 1},
-	{kParamType_ScriptVariable, 1}
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Variable", kParamType_ScriptVariable, 0},
+	{"Variable", kParamType_ScriptVariable, 1},
+	{"Variable", kParamType_ScriptVariable, 1},
+	{"Variable", kParamType_ScriptVariable, 1}
 };
 
 constexpr ParamInfo kParams_NVSE_OneNum_OneOptionalNum[] =
 {
-	{kNVSEParamType_Number},
-	{kNVSEParamType_Number, 1}
+	{"Integer", kNVSEParamType_Number, 0},
+	{"Integer", kNVSEParamType_Number, 1}
 };
 
 constexpr ParamInfo kParams_NVSE_OneOptionalNum_OneOptionalBasicType[] =
 {
-	{kNVSEParamType_Number, 1},
-	{kNVSEParamType_BasicType, 1}
+	{"Integer", kNVSEParamType_Number, 1},
+	{"Basic Type", kNVSEParamType_BasicType, 1}
 };
 
 constexpr ParamInfo kParams_OneInt_ThreeOptionalInts[] =
 {
-	{kParamType_Integer},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1},
-	{kParamType_Integer, 1}
+	{"Integer", kParamType_Integer, 0},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1},
+	{"Integer", kParamType_Integer, 1}
 };
 
 constexpr ParamInfo kParams_OneOptionalInt_OneOptionalFloat_OneOptionalInt[] =
 {
-	{kParamType_Integer, 1},
-	{kParamType_Float, 1},
-	{kParamType_Integer, 1}
+	{"Integer", kParamType_Integer, 1},
+	{"Float", kParamType_Float, 0},
+	{"Integer", kParamType_Integer, 1}
 };

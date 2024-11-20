@@ -1,5 +1,9 @@
 #include "nvse/GameTypes.h"
 
+String::String() {}
+
+String::~String() {}
+
 void String::Init(UInt32 bufSize)
 {
 	if (m_data) Game_HeapFree(m_data);
@@ -87,7 +91,7 @@ void String::InsertChar(char toInsert, UInt32 index)
 		m_data = newStr;
 	}
 	if (index < m_dataLen)
-		MemCopy(m_data + index + 1, m_data + index, m_dataLen - index);
+		memmove(m_data + index + 1, m_data + index, m_dataLen - index);
 	m_dataLen++;
 	m_data[index] = toInsert;
 	m_data[m_dataLen] = 0;

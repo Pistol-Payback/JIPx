@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "Release\\GameExtraData.obj",
+            "outputs": [
+                "C:\\Users\\Xavier\\source\\repos\\JIPxx\\Release\\vc143.pdb",
+                "Release\\"
+            ],
+            "requires": []
+        }
+    ]
+}

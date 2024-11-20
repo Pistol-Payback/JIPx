@@ -1,24 +1,24 @@
 #pragma once
 
-DEFINE_COMMAND_PLUGIN(RefToString, 0, kParams_OneOptionalForm);
-DEFINE_COMMAND_PLUGIN(StringToRef, 0, kParams_OneString);
-DEFINE_COMMAND_PLUGIN(GetMinOf, 0, kParams_TwoDoubles_ThreeOptionalDoubles);
-DEFINE_COMMAND_PLUGIN(GetMaxOf, 0, kParams_TwoDoubles_ThreeOptionalDoubles);
-DEFINE_COMMAND_PLUGIN(ReadArrayFromFile, 0, kParams_OneString_OneOptionalInt);
-DEFINE_COMMAND_PLUGIN(WriteArrayToFile, 0, kParams_OneString_TwoInts_OneOptionalInt);
-DEFINE_COMMAND_PLUGIN(ReadStringFromFile, 0, kParams_OneString_TwoOptionalInts);
-DEFINE_COMMAND_PLUGIN(WriteStringToFile, 0, kParams_OneString_OneInt_OneFormatString);
-DEFINE_COMMAND_PLUGIN(GetLoadOrderChanged, 0, nullptr);
-DEFINE_COMMAND_PLUGIN(ValidateModIndex, 0, kParams_OneInt);
-DEFINE_COMMAND_PLUGIN(ClearJIPSavedData, 0, kParams_FourInts);
-DEFINE_COMMAND_PLUGIN(ModLogPrint, 0, kParams_OneInt_OneFormatString);
-DEFINE_COMMAND_PLUGIN(GetOptionalPatch, 0, kParams_OneString);
-DEFINE_COMMAND_PLUGIN(SetOptionalPatch, 0, kParams_OneString_OneInt);
-DEFINE_COMMAND_PLUGIN(GetPluginHeaderVersion, 0, kParams_OneString);
-DEFINE_COMMAND_PLUGIN(GetIsLAA, 0, nullptr);
-DEFINE_COMMAND_PLUGIN(GetArrayValue, 0, kParams_TwoInts);
-DEFINE_COMMAND_PLUGIN(GetRandomInRange, 0, kParams_TwoInts);
-DEFINE_COMMAND_PLUGIN(GetSessionTime, 0, nullptr);
+DEFINE_COMMAND_PLUGIN(RefToString, 0, 1, kParams_OneOptionalForm);
+DEFINE_COMMAND_PLUGIN(StringToRef, 0, 1, kParams_OneString);
+DEFINE_COMMAND_PLUGIN(GetMinOf, 0, 5, kParams_TwoDoubles_ThreeOptionalDoubles);
+DEFINE_COMMAND_PLUGIN(GetMaxOf, 0, 5, kParams_TwoDoubles_ThreeOptionalDoubles);
+DEFINE_COMMAND_PLUGIN(ReadArrayFromFile, 0, 2, kParams_OneString_OneOptionalInt);
+DEFINE_COMMAND_PLUGIN(WriteArrayToFile, 0, 4, kParams_OneString_TwoInts_OneOptionalInt);
+DEFINE_COMMAND_PLUGIN(ReadStringFromFile, 0, 3, kParams_OneString_TwoOptionalInts);
+DEFINE_COMMAND_PLUGIN(WriteStringToFile, 0, 23, kParams_OneString_OneInt_OneFormatString);
+DEFINE_COMMAND_PLUGIN(GetLoadOrderChanged, 0, 0, NULL);
+DEFINE_COMMAND_PLUGIN(ValidateModIndex, 0, 1, kParams_OneInt);
+DEFINE_COMMAND_PLUGIN(ClearJIPSavedData, 0, 4, kParams_FourInts);
+DEFINE_COMMAND_PLUGIN(ModLogPrint, 0, 22, kParams_OneInt_OneFormatString);
+DEFINE_COMMAND_PLUGIN(GetOptionalPatch, 0, 1, kParams_OneString);
+DEFINE_COMMAND_PLUGIN(SetOptionalPatch, 0, 2, kParams_OneString_OneInt);
+DEFINE_COMMAND_PLUGIN(GetPluginHeaderVersion, 0, 1, kParams_OneString);
+DEFINE_COMMAND_PLUGIN(GetIsLAA, 0, 0, NULL);
+DEFINE_COMMAND_PLUGIN(GetArrayValue, 0, 2, kParams_TwoInts);
+DEFINE_COMMAND_PLUGIN(GetRandomInRange, 0, 2, kParams_TwoInts);
+DEFINE_COMMAND_PLUGIN(GetSessionTime, 0, 0, NULL);
 
 bool Cmd_RefToString_Execute(COMMAND_ARGS)
 {
@@ -36,6 +36,7 @@ bool Cmd_StringToRef_Execute(COMMAND_ARGS)
 	char refStr[0x80];
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &refStr))
 		REFR_RES = StringToRef(refStr);
+	else REFR_RES = 0;
 	return true;
 }
 
@@ -59,6 +60,7 @@ bool Cmd_GetMinOf_Execute(COMMAND_ARGS)
 			movlpd	[eax], xmm0
 		}
 	}
+	else *result = 0;
 	return true;
 }
 
@@ -82,12 +84,14 @@ bool Cmd_GetMaxOf_Execute(COMMAND_ARGS)
 			movlpd	[eax], xmm0
 		}
 	}
+	else *result = 0;
 	return true;
 }
 
 bool Cmd_ReadArrayFromFile_Execute(COMMAND_ARGS)
 {
-	char filePath[0x100];
+	*result = 0;
+	char filePath[0x80];
 	UInt32 transpose = 0;
 	if (!ExtractArgsEx(EXTRACT_ARGS_EX, &filePath, &transpose))
 		return true;
@@ -170,7 +174,7 @@ bool Cmd_ReadArrayFromFile_Execute(COMMAND_ARGS)
 	return true;
 }
 
-void __fastcall WriteElemToFile(TempArrayElements *colElements, UInt32 idx, FILE *theFile, bool edid)
+void __fastcall WriteElemToFile(TempArrayElements *colElements, UInt32 idx, FILE *theFile)
 {
 	if (colElements->size > idx)
 	{
@@ -188,12 +192,6 @@ void __fastcall WriteElemToFile(TempArrayElements *colElements, UInt32 idx, FILE
 				if (elem->Form())
 				{
 					fputc('@', theFile);
-					if (edid)
-						if (const char *edidStr = elem->Form()->GetEditorID(); edidStr && *edidStr)
-						{
-							fputs(edidStr, theFile);
-							return;
-						}
 					fputs(elem->Form()->RefToString(), theFile);
 					return;
 				}
@@ -209,9 +207,10 @@ void __fastcall WriteElemToFile(TempArrayElements *colElements, UInt32 idx, FILE
 
 bool Cmd_WriteArrayToFile_Execute(COMMAND_ARGS)
 {
-	char filePath[0x100];
-	UInt32 apnd, arrID, flags = 0;
-	if (!ExtractArgsEx(EXTRACT_ARGS_EX, &filePath, &apnd, &arrID, &flags))
+	*result = 0;
+	char filePath[0x80];
+	UInt32 apnd, arrID, transpose = 0;
+	if (!ExtractArgsEx(EXTRACT_ARGS_EX, &filePath, &apnd, &arrID, &transpose))
 		return true;
 	NVSEArrayVar *mainArray = LookupArrayByID(arrID);
 	if (!mainArray) return true;
@@ -221,7 +220,7 @@ bool Cmd_WriteArrayToFile_Execute(COMMAND_ARGS)
 	Vector<TempArrayElements> columnBuffer(topLine.size);
 	for (UInt32 idx = 0; idx < topLine.size; idx++)
 	{
-		if (NVSEArrayVar *column = topLine[idx].GetArray())
+		if (NVSEArrayVar *column = topLine[idx].Array())
 		{
 			TempArrayElements *colElements = columnBuffer.Append(column);
 			if (numLines < colElements->size)
@@ -232,19 +231,19 @@ bool Cmd_WriteArrayToFile_Execute(COMMAND_ARGS)
 	ReplaceChr(filePath, '/', '\\');
 	if (FileStream outputFile; outputFile.OpenWrite(filePath, apnd != 0))
 	{
-		bool edid = (flags & 2) != 0;
-		if (!(flags & 1))
+		FILE *theFile = outputFile.GetStream();
+		if (!transpose)
 		{
 			for (UInt32 idx = 0; idx < numLines; idx++)
 			{
 				for (UInt32 cnt = 0; cnt < topLine.size; cnt++)
 				{
-					WriteElemToFile(&columnBuffer[cnt], idx, outputFile, edid);
+					WriteElemToFile(&columnBuffer[cnt], idx, theFile);
 					if ((topLine.size - cnt) > 1)
-						fputc('\t', outputFile);
+						fputc('\t', theFile);
 				}
 				if ((numLines - idx) > 1)
-					fputc('\n', outputFile);
+					fputc('\n', theFile);
 			}
 		}
 		else
@@ -254,12 +253,12 @@ bool Cmd_WriteArrayToFile_Execute(COMMAND_ARGS)
 				TempArrayElements *colElements = &columnBuffer[cnt];
 				for (UInt32 idx = 0; idx < numLines; idx++)
 				{
-					WriteElemToFile(colElements, idx, outputFile, edid);
+					WriteElemToFile(colElements, idx, theFile);
 					if ((numLines - idx) > 1)
-						fputc('\t', outputFile);
+						fputc('\t', theFile);
 				}
 				if ((topLine.size - cnt) > 1)
-					fputc('\n', outputFile);
+					fputc('\n', theFile);
 			}
 		}
 		*result = 1;
@@ -302,14 +301,15 @@ bool Cmd_ReadStringFromFile_Execute(COMMAND_ARGS)
 
 bool Cmd_WriteStringToFile_Execute(COMMAND_ARGS)
 {
-	char *buffer = GetStrArgBuffer();
+	*result = 0;
+	char filePath[0x80], *buffer = GetStrArgBuffer();
 	UInt32 apnd;
-	if (ExtractFormatStringArgs(2, buffer + 0x100, EXTRACT_ARGS_EX, kCommandInfo_WriteStringToFile.numParams, buffer, &apnd))
+	if (ExtractFormatStringArgs(2, buffer, EXTRACT_ARGS_EX, kCommandInfo_WriteStringToFile.numParams, &filePath, &apnd))
 	{
-		ReplaceChr(buffer, '/', '\\');
-		if (FileStream outputFile; outputFile.OpenWrite(buffer, apnd != 0))
+		ReplaceChr(filePath, '/', '\\');
+		if (FileStream outputFile; outputFile.OpenWrite(filePath, apnd != 0))
 		{
-			outputFile.WriteStr(buffer + 0x100);
+			outputFile.WriteStr(buffer);
 			*result = 1;
 		}
 	}
@@ -318,6 +318,7 @@ bool Cmd_WriteStringToFile_Execute(COMMAND_ARGS)
 
 bool Cmd_GetLoadOrderChanged_Execute(COMMAND_ARGS)
 {
+	*result = 0;
 	UInt8 *idxArray = g_BGSSaveLoadGame->saveMods;
 	for (UInt32 idx = 254; idx > 0; idx--)
 	{
@@ -360,9 +361,9 @@ bool Cmd_ClearJIPSavedData_Execute(COMMAND_ARGS)
 			if (refIter().modIdx == modIdx) refIter.Remove();
 		s_dataChangedFlags |= kChangedFlag_LinkedRefs;
 	}
-	if (auxVars && s_auxVariables[0]->Erase((auxVars == 2) ? 0xFF : modIdx))
+	if (auxVars && s_auxVariablesPerm->Erase((auxVars == 2) ? 0xFF : modIdx))
 		s_dataChangedFlags |= kChangedFlag_AuxVars;
-	if (refMaps && s_refMapArrays[0]->Erase((refMaps == 2) ? 0xFF : modIdx))
+	if (refMaps && s_refMapArraysPerm->Erase((refMaps == 2) ? 0xFF : modIdx))
 		s_dataChangedFlags |= kChangedFlag_RefMaps;
 	/*if (xData && !s_extraDataKeysMap->Empty() && (modIdx < 0xFF))
 	{
@@ -408,7 +409,7 @@ bool Cmd_ModLogPrint_Execute(COMMAND_ARGS)
 bool Cmd_GetOptionalPatch_Execute(COMMAND_ARGS)
 {
 	char patchName[0x40];
-	bool enabled = 0;
+	int enabled = 0;
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &patchName))
 		switch (s_optionalHacks->Get(patchName))
 		{
@@ -416,59 +417,58 @@ bool Cmd_GetOptionalPatch_Execute(COMMAND_ARGS)
 				enabled = HOOK_INSTALLED(CalculateHitDamage);
 				break;
 			case 2:
-				enabled = HOOK_INSTALLED(FO3Repair);
+				enabled = HOOK_INSTALLED(EnableRepairButton);
 				break;
 			case 3:
-				enabled = s_patchInstallState.bigGunsSkill;
+				enabled = s_bigGunsSkill;
 				break;
 			case 4:
-				enabled = s_patchInstallState.impactDmgFix;
+				enabled = HOOK_INSTALLED(InitMissileFlags);
 				break;
 			case 5:
 				enabled = HOOK_INSTALLED(UpdateTimeGlobals);
 				break;
 			case 6:
-				enabled = s_patchInstallState.hardcoreNeedsFix;
+				enabled = s_hardcoreNeedsFix;
 				break;
 			case 7:
-				enabled = s_patchInstallState.failedScriptLocks;
+				enabled = s_failedScriptLocks;
 				break;
 			case 8:
-				enabled = s_patchInstallState.dblPrecision;
+				enabled = HOOK_INSTALLED(DoOperator);
 				break;
 			case 9:
-				enabled = HOOK_INSTALLED(QuantitySelect);
+				enabled = HOOK_INSTALLED(QttSelectInventory);
 				break;
 			case 11:
-				enabled = s_patchInstallState.FO3WpnDegrade;
+				enabled = s_FO3WpnDegradation;
 				break;
 			case 12:
-				enabled = s_patchInstallState.localizedDTDR;
+				enabled = s_localizedDTDR;
 				break;
 			case 13:
 				enabled = HOOK_INSTALLED(VoiceModulationFix);
 				break;
 			case 14:
-				enabled = s_patchInstallState.sneakBoundsFix;
+				enabled = HOOK_INSTALLED(SneakBoundingBoxFix);
 				break;
 			case 15:
-				enabled = s_patchInstallState.NVACAlerts;
+				enabled = s_NVACAlerts;
 				break;
 			case 16:
-				enabled = HOOK_INSTALLED(LoadScreenFix);
+				enabled = HOOK_INSTALLED(GetSuitableLoadScreens);
 				break;
 			case 17:
-				enabled = s_patchInstallState.NPCWeaponMods;
+				enabled = s_NPCWeaponMods;
 				break;
 			case 18:
-				enabled = s_patchInstallState.NPCPerks + s_NPCPerksAutoAdd;
+				enabled = s_NPCPerks + s_NPCPerksAutoAdd;
 				break;
 			case 19:
-				enabled = s_patchInstallState.creSpreadFix;
+				enabled = HOOK_INSTALLED(CreatureSpreadFix);
 				break;
 		}
-	if (enabled)
-		*result = 1;
+	*result = enabled;
 	DoConsolePrint(result);
 	return true;
 }
@@ -484,6 +484,7 @@ bool Cmd_SetOptionalPatch_Execute(COMMAND_ARGS)
 
 bool Cmd_GetPluginHeaderVersion_Execute(COMMAND_ARGS)
 {
+	*result = 0;
 	char modName[0x50];
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &modName))
 		if (auto modInfo = g_dataHandler->LookupModByName(modName))
@@ -500,6 +501,7 @@ bool Cmd_GetIsLAA_Execute(COMMAND_ARGS)
 
 bool Cmd_GetArrayValue_Execute(COMMAND_ARGS)
 {
+	*result = 0;
 	UInt32 arrID;
 	SInt32 index;
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &arrID, &index) && arrID)
@@ -529,6 +531,7 @@ bool Cmd_GetRandomInRange_Execute(COMMAND_ARGS)
 	SInt32 minVal, maxVal;
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &minVal, &maxVal))
 		*result = GetRandomIntInRange(minVal, maxVal);
+	else *result = 0;
 	return true;
 }
 

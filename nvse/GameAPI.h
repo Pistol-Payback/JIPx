@@ -138,8 +138,6 @@ struct ScriptLocals
 	ScriptVar* __fastcall GetVariable(UInt32 id) const;
 	UInt32 ResetAllVariables();
 	ScriptLocals *CreateCopy();
-
-	__forceinline void Destroy() {ThisCall(0x41AF70, this, 1);}
 };
 
 // 914
@@ -294,7 +292,7 @@ public:
 
 	inline void ReadBuff(void *buff, UInt32 size)
 	{
-		MemCopy(buff, chunk + chunkConsumed, size);
+		memcpy(buff, chunk + chunkConsumed, size);
 		chunkConsumed += size + 1;
 	}
 
@@ -452,9 +450,9 @@ public:
 
 	__forceinline static TESSaveLoadGame *GetSingleton() {return *(TESSaveLoadGame**)0x11DE45C;}
 
-	__forceinline void AddCreatedForm(TESForm *pForm)
+	__forceinline UInt32 AddCreatedForm(TESForm *pForm)
 	{
-		return ThisCall(0x861780, this, pForm);
+		return ThisCall<UInt32>(0x861780, this, pForm);
 	}
 };
 

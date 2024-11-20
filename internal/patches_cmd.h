@@ -1,6 +1,6 @@
 #pragma once
 
-DEFINE_COMMAND_PLUGIN(GetNVSEVersionFull, 0, nullptr);
+DEFINE_COMMAND_PLUGIN(GetNVSEVersionFull, 0, 0, nullptr);
 
 bool Cmd_GetNVSEVersionFull_Execute(COMMAND_ARGS)
 {
@@ -11,19 +11,17 @@ bool Cmd_GetNVSEVersionFull_Execute(COMMAND_ARGS)
 bool Hook_MenuMode_Execute(COMMAND_ARGS)
 {
 	UInt32 menuID = 0;
-	ExtractArgsEx(EXTRACT_ARGS_EX, &menuID);
-	bool menuMode = IsMenuMode(menuID);
-	if (menuMode)
-		*result = 1;
-	if (IsConsoleOpen())
-		Console_Print("MenuMode %d >> %d", menuID, menuMode);
+	bool menuMode = false;
+	if (ExtractArgsEx(EXTRACT_ARGS_EX, &menuID))
+		menuMode = IsMenuMode(menuID);
+	*result = menuMode;
+	if (IsConsoleOpen()) Console_Print("MenuMode %d >> %d", menuID, menuMode);
 	return true;
 }
 
 bool Hook_MenuMode_Eval(TESObjectREFR *thisObj, UInt32 menuID, UInt32 arg2, double *result)
 {
-	if (IsMenuMode(menuID))
-		*result = 1;
+	*result = IsMenuMode(menuID);
 	return true;
 }
 
@@ -31,8 +29,11 @@ bool Hook_GetItemCount_Execute(COMMAND_ARGS)
 {
 	TESForm *form;
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &form))
+	{
 		*result = thisObj->GetItemCount(form);
-	DoConsolePrint(result);
+		DoConsolePrint(result);
+	}
+	else *result = 0;
 	return true;
 }
 
@@ -44,6 +45,7 @@ bool Hook_GetItemCount_Eval(TESObjectREFR *thisObj, TESForm *form, UInt32 arg2, 
 
 bool Hook_GetContainer_Execute(COMMAND_ARGS)
 {
+	*result = 0;
 	if (containingObj)
 		REFR_RES = containingObj->refID;
 	else if (InventoryRef *invRef = InventoryRefGetForID(thisObj->refID); invRef && invRef->containerRef)
@@ -53,10 +55,14 @@ bool Hook_GetContainer_Execute(COMMAND_ARGS)
 
 bool Hook_IsInList_Execute(COMMAND_ARGS)
 {
+	*result = 0;
 	BGSListForm *formList;
-	if (ExtractArgsEx(EXTRACT_ARGS_EX, &formList) && formList->list.IsInList(thisObj->GetBaseForm()))
-		*result = 1;
-	DoConsolePrint(result);
+	if (ExtractArgsEx(EXTRACT_ARGS_EX, &formList))
+	{
+		if (formList->list.IsInList(thisObj->GetBaseForm()))
+			*result = 1;
+		DoConsolePrint(result);
+	}
 	return true;
 }
 
@@ -76,10 +82,10 @@ bool Hook_GetHitLocation_Execute(COMMAND_ARGS)
 	return true;
 }
 
-__declspec(noinline) UInt8 __fastcall DoGetPerkRank(Actor *actor, BGSPerk *perk, bool forTeammates)
+UInt8 __fastcall DoGetPerkRank(Actor *actor, BGSPerk *perk, bool forTeammates)
 {
 	if IS_ACTOR(actor)
-		if (s_patchInstallState.NPCPerks)
+		if (s_NPCPerks)
 			return actor->GetPerkRank(perk, forTeammates);
 		else if (actor->IsPlayer() || actor->isTeammate)
 			return g_thePlayer->GetPerkRank(perk, forTeammates | actor->isTeammate);
@@ -88,6 +94,7 @@ __declspec(noinline) UInt8 __fastcall DoGetPerkRank(Actor *actor, BGSPerk *perk,
 
 bool Hook_HasPerk_Execute(COMMAND_ARGS)		// Modifies HasPerk to allow detection of follower perks on followers.
 {
+	*result = 0;
 	BGSPerk *perk;
 	UInt32 useAlt = 0;
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &perk, &useAlt))
@@ -102,8 +109,16 @@ bool Hook_HasPerk_Execute(COMMAND_ARGS)		// Modifies HasPerk to allow detection 
 
 bool Hook_HasPerk_Eval(Actor *thisObj, BGSPerk *perk, UInt32 useAlt, double *result)
 {
-	if (DoGetPerkRank(thisObj, perk, useAlt))
-		*result = 1;
+	*result = DoGetPerkRank(thisObj, perk, useAlt) != 0;
+	return true;
+}
+
+bool Hook_GetBaseObject_Execute(COMMAND_ARGS)
+{
+	*result = 0;
+	TESForm *baseForm = thisObj->GetBaseForm();
+	if (baseForm) REFR_RES = baseForm->refID;
+	DoConsolePrint(baseForm);
 	return true;
 }
 
@@ -112,17 +127,17 @@ bool Hook_IsKeyPressed_Execute(COMMAND_ARGS)
 	UInt32 keyID, flags = 1;
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &keyID, &flags))
 		*result = g_DIHookCtrl->IsKeyPressed(keyID, flags);
+	else *result = 0;
 	return true;
 }
 
 bool Hook_IsKeyPressed_Eval(TESObjectREFR *thisObj, UInt32 keyID, UInt32 flags, double *result)
 {
-	if (g_DIHookCtrl->IsKeyPressed(keyID, flags))
-		*result = 1;
+	*result = g_DIHookCtrl->IsKeyPressed(keyID, flags);
 	return true;
 }
 
-__declspec(noinline) bool __fastcall IsControlPressed(UInt32 ctrlID, UInt32 flags = 1)
+bool __fastcall IsControlPressed(UInt32 ctrlID, UInt32 flags = 1)
 {
 	if (!s_controllerReady)
 	{
@@ -184,6 +199,7 @@ bool Hook_EnableControl_Execute(COMMAND_ARGS)
 
 bool Hook_TapControl_Execute(COMMAND_ARGS)
 {
+	*result = 0;
 	UInt32 ctrlID;
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &ctrlID) && (ctrlID < MAX_CONTROL_BIND))
 		if (!s_controllerReady)
@@ -211,6 +227,7 @@ bool Hook_TapControl_Execute(COMMAND_ARGS)
 
 bool Hook_IsControlDisabled_Execute(COMMAND_ARGS)
 {
+	*result = 0;
 	UInt32 ctrlID;
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &ctrlID) && (ctrlID < MAX_CONTROL_BIND))
 		if (!s_controllerReady)
@@ -232,15 +249,17 @@ bool Hook_IsControlDisabled_Execute(COMMAND_ARGS)
 bool Hook_IsControlPressed_Execute(COMMAND_ARGS)
 {
 	UInt32 ctrlID, flags = 1;
-	if (ExtractArgsEx(EXTRACT_ARGS_EX, &ctrlID, &flags) && (ctrlID < MAX_CONTROL_BIND) && IsControlPressed(ctrlID, flags))
-		*result = 1;
+	if (ExtractArgsEx(EXTRACT_ARGS_EX, &ctrlID, &flags) && (ctrlID < MAX_CONTROL_BIND))
+		*result = IsControlPressed(ctrlID, flags);
+	else *result = 0;
 	return true;
 }
 
 bool Hook_IsControlPressed_Eval(TESObjectREFR *thisObj, UInt32 ctrlID, UInt32 flags, double *result)
 {
-	if ((ctrlID < MAX_CONTROL_BIND) && IsControlPressed(ctrlID, flags))
-		*result = 1;
+	if (ctrlID < MAX_CONTROL_BIND)
+		*result = IsControlPressed(ctrlID, flags);
+	else *result = 0;
 	return true;
 }
 
@@ -281,6 +300,7 @@ bool Hook_GetNumericGameSetting_Execute(COMMAND_ARGS)
 
 bool Hook_SetNumericGameSetting_Execute(COMMAND_ARGS)
 {
+	*result = 0;
 	char settingName[0x80];
 	double newVal;
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &settingName, &newVal) && ((settingName[0] | 0x20) != 's'))
@@ -311,6 +331,7 @@ bool Hook_GetNumericINISetting_Execute(COMMAND_ARGS)
 
 bool Hook_SetNumericINISetting_Execute(COMMAND_ARGS)
 {
+	*result = 0;
 	char settingName[0x80];
 	double newVal;
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &settingName, &newVal) && ((settingName[0] | 0x20) != 's'))
@@ -324,7 +345,7 @@ bool Hook_SetNumericINISetting_Execute(COMMAND_ARGS)
 	return true;
 }
 
-__declspec(noinline) SInt32 __fastcall IsRefInList(BGSListForm *listForm, TESForm *form)
+SInt32 __fastcall IsRefInList(BGSListForm *listForm, TESForm *form)
 {
 	SInt32 index = listForm->list.GetIndexOf(form);
 	if ((index < 0) && IS_REFERENCE(form))
@@ -393,6 +414,7 @@ bool Hook_IsPluginInstalled_Execute(COMMAND_ARGS)
 	char pluginName[0x80];
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &pluginName) && (GetPluginInfoByName(pluginName) || IsJIPAlias(pluginName)))
 		*result = 1;
+	else *result = 0;
 	DoConsolePrint(result);
 	return true;
 }
@@ -404,7 +426,7 @@ bool Hook_GetPluginVersion_Execute(COMMAND_ARGS)
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &pluginName))
 		if (IsJIPAlias(pluginName))
 			*result = JIP_LN_VERSION;
-		else if (auto pluginInfo = GetPluginInfoByName(pluginName))
+		else if (const PluginInfo *pluginInfo = GetPluginInfoByName(pluginName))
 			*result = (int)pluginInfo->version;
 	DoConsolePrint(result);
 	return true;
@@ -430,6 +452,8 @@ void InitCmdPatches()
 	cmdInfo->eval = (Cmd_Eval)Hook_HasPerk_Eval;
 	cmdInfo = GetCmdByOpcode(0x127D);
 	cmdInfo->execute = Cmd_GetNVSEVersionFull_Execute;
+	cmdInfo = GetCmdByOpcode(0x1403);
+	cmdInfo->execute = Hook_GetBaseObject_Execute;
 	cmdInfo = GetCmdByOpcode(0x1453);
 	cmdInfo->execute = Hook_IsKeyPressed_Execute;
 	cmdInfo->eval = (Cmd_Eval)Hook_IsKeyPressed_Eval;

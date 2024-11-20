@@ -1,12 +1,13 @@
 #pragma once
 
-DEFINE_COMMAND_PLUGIN(GetCombatStyleTraitNumeric, 0, kParams_OneCombatStyle_OneInt);
-DEFINE_COMMAND_PLUGIN(SetCombatStyleTraitNumeric, 0, kParams_OneCombatStyle_OneInt_OneFloat);
-DEFINE_COMMAND_PLUGIN(GetCombatStyleFlag, 0, kParams_OneCombatStyle_OneInt);
-DEFINE_COMMAND_PLUGIN(SetCombatStyleFlag, 0, kParams_OneCombatStyle_TwoInts);
+DEFINE_COMMAND_PLUGIN(GetCombatStyleTraitNumeric, 0, 2, kParams_OneCombatStyle_OneInt);
+DEFINE_COMMAND_PLUGIN(SetCombatStyleTraitNumeric, 0, 3, kParams_OneCombatStyle_OneInt_OneFloat);
+DEFINE_COMMAND_PLUGIN(GetCombatStyleFlag, 0, 2, kParams_OneCombatStyle_OneInt);
+DEFINE_COMMAND_PLUGIN(SetCombatStyleFlag, 0, 3, kParams_OneCombatStyle_TwoInts);
 
 bool Cmd_GetCombatStyleTraitNumeric_Execute(COMMAND_ARGS)
 {
+	*result = 0;
 	TESCombatStyle *cStyle;
 	UInt32 traitID;
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &cStyle, &traitID) && (traitID <= 63))
@@ -173,8 +174,9 @@ bool Cmd_GetCombatStyleFlag_Execute(COMMAND_ARGS)
 {
 	TESCombatStyle *cStyle;
 	UInt32 flagID;
-	if (ExtractArgsEx(EXTRACT_ARGS_EX, &cStyle, &flagID) && (flagID <= 15) && (cStyle->csFlags & (1 << flagID)))
-		*result = 1;
+	if (ExtractArgsEx(EXTRACT_ARGS_EX, &cStyle, &flagID) && (flagID <= 15))
+		*result = (cStyle->csFlags & (1 << flagID)) != 0;
+	else *result = 0;
 	return true;
 }
 

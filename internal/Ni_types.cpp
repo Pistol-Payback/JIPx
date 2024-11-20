@@ -7,12 +7,12 @@ void NiPoint2::Dump() const
 
 void NiVector3::operator=(const NiMatrix33 &from)
 {
-	SetPS(from.ToEulerPRY());
+	*this = from.ToEulerPRY();
 }
 
 void NiVector3::operator=(const NiQuaternion &from)
 {
-	SetPS(from.ToEulerPRY());
+	*this = from.ToEulerPRY();
 }
 
 __declspec(naked) NiVector3& NiVector3::Normalize()
@@ -984,7 +984,7 @@ __declspec(naked) NiQuaternion& __fastcall NiQuaternion::FromAxisAngle(const Axi
 void NiQuaternion::operator=(const hkQuaternion &hkQt)
 {
 	__m128 m = hkQt.PS();
-	SetPS(_mm_shuffle_ps(m, m, 0x93));
+	*this = _mm_shuffle_ps(m, m, 0x93);
 }
 
 __declspec(naked) __m128 __vectorcall NiQuaternion::MultiplyVector(__m128 vec) const
@@ -1305,7 +1305,7 @@ __declspec(naked) NiTransform& __fastcall NiTransform::GetInverse(NiTransform &o
 void NiTransform::Dump() const
 {
 	//rotate.Dump();
-	NiVector4 angles(rotate.ToEulerPRY() * GET_PS(9));
+	NiVector4 angles = rotate.ToEulerPRY() * GET_PS(9);
 	PrintDebug("T (%.4f, %.4f, %.4f) R (%.4f, %.4f, %.4f) S %.4f", translate.x, translate.y, translate.z, angles.x, angles.y, angles.z, scale);
 }
 
@@ -1366,7 +1366,7 @@ __declspec(naked) void __vectorcall NiViewport::SetFOV(float fov)
 		retn
 		ALIGN 4
 	kFlt2d3:
-		EMIT_DW(0x3F2AAAAB)
+		EMIT_DW(3F,2A,AA,AB)
 	}
 }
 
@@ -1514,3 +1514,54 @@ __declspec(naked) __m128 __vectorcall TransformWorldToLocal(const NiVector3 &ori
 		retn
 	}
 }
+/*
+__declspec(naked) __m128 __vectorcall TransformWorldToLocal(const NiVector3& origin, const NiVector3& target, __m128 rotation)
+{
+	__asm
+	{
+		push    ebp
+		mov     ebp, esp
+		sub     esp, 0x24
+		push    ecx
+		push    edx
+		lea     ecx, [ebp - 0x24]
+
+		// Convert rotation to inverse matrix
+		call    NiMatrix33::FromEulerPRYInv
+		pop     edx
+		pop     ecx
+
+		// Load target and origin positions
+		movups  xmm4, [edx]      // xmm4 = target
+		movups  xmm1, [ecx]      // xmm1 = origin
+
+		// Translate target relative to origin
+		subps   xmm4, xmm1       // xmm4 = target - origin
+		andps   xmm4, PS_XYZ0Mask
+
+		// Transform to local coordinates using the inverse rotation matrix
+		movups  xmm0, [eax]      // First row of the inverse rotation matrix
+		mulps   xmm0, xmm4       // Multiply with translated vector
+		haddps  xmm0, xmm0       // Horizontal add for x component
+		haddps  xmm0, xmm0
+
+		movups  xmm1, [eax + 0xC]  // Second row of the inverse rotation matrix
+		mulps   xmm1, xmm4
+		haddps  xmm1, xmm1       // Horizontal add for y component
+		haddps  xmm1, xmm1
+
+		movups  xmm2, [eax + 0x18] // Third row of the inverse rotation matrix
+		mulps   xmm2, xmm4
+		haddps  xmm2, xmm2       // Horizontal add for z component
+		haddps  xmm2, xmm2
+
+		// Pack x, y, and z components into xmm0 for return
+		movq    xmm0, xmm0
+		unpcklps xmm0, xmm1
+		movq    xmm2, xmm2
+		unpcklpd xmm0, xmm2
+
+		leave
+		retn
+	}
+}*/

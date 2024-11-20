@@ -126,16 +126,20 @@ __declspec(naked) UInt32 __stdcall Hook_XInputGetState(UInt32 index, XINPUT_GAME
 
 bool HookXInput()
 {
-	if (HMODULE xinput = GetModuleHandle("XINPUT1_3"))
-		if (XInputGetStateEx = (_XInputGetStateEx)GetProcAddress(xinput, (LPCSTR)0x64))
+	HMODULE xinput = GetModuleHandle("XINPUT1_3");
+	if (xinput)
+	{
+		XInputGetStateEx = (_XInputGetStateEx)GetProcAddress(xinput, (LPCSTR)0x64);
+		if (XInputGetStateEx)
 		{
 			WriteRelJump(0x9F996E, (UInt32)Hook_XInputGetState);
 			return true;
 		}
+	}
 	return false;
 }
 
-__declspec(noinline) bool __fastcall GetXIControlPressed(XINPUT_GAMEPAD_EX *xiState, UInt32 ctrlID)
+bool __fastcall GetXIControlPressed(XINPUT_GAMEPAD_EX *xiState, UInt32 ctrlID)
 {
 	switch (CONTROLLER_BIND(ctrlID))
 	{
@@ -184,7 +188,7 @@ __declspec(noinline) bool __fastcall GetXIControlPressed(XINPUT_GAMEPAD_EX *xiSt
 	}
 }
 
-__declspec(noinline) bool __fastcall GetXIControlDisabled(UInt32 ctrlID)
+bool __fastcall GetXIControlDisabled(UInt32 ctrlID)
 {
 	switch (CONTROLLER_BIND(ctrlID))
 	{
@@ -233,7 +237,7 @@ __declspec(noinline) bool __fastcall GetXIControlDisabled(UInt32 ctrlID)
 	}
 }
 
-__declspec(noinline) void __fastcall SetXIControlDisabled(UInt32 ctrlID, bool bDisable)
+void __fastcall SetXIControlDisabled(UInt32 ctrlID, bool bDisable)
 {
 	switch (CONTROLLER_BIND(ctrlID))
 	{
@@ -322,7 +326,7 @@ __declspec(noinline) void __fastcall SetXIControlDisabled(UInt32 ctrlID, bool bD
 	}
 }
 
-__declspec(noinline) void __fastcall SetXIControlHeld(UInt32 ctrlID, bool bHold)
+void __fastcall SetXIControlHeld(UInt32 ctrlID, bool bHold)
 {
 	switch (CONTROLLER_BIND(ctrlID))
 	{
@@ -399,7 +403,7 @@ __declspec(noinline) void __fastcall SetXIControlHeld(UInt32 ctrlID, bool bHold)
 	}
 }
 
-__declspec(noinline) bool __fastcall TapXIControl(UInt32 ctrlID)
+bool __fastcall TapXIControl(UInt32 ctrlID)
 {
 	switch (CONTROLLER_BIND(ctrlID))
 	{

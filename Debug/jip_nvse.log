@@ -1,0 +1,9 @@
+﻿  Scanning sources for module dependencies...
+  jip_nvse.cpp
+  Compiling...
+  jip_nvse.cpp
+     Creating library C:\Users\Xavier\source\repos\JIPxx\Debug\jip_nvse.lib and object C:\Users\Xavier\source\repos\JIPxx\Debug\jip_nvse.exp
+  LINK : /LTCG specified but no code generation required; remove /LTCG from the link command line to improve linker performance
+  jip_nvse.vcxproj -> C:\Users\Xavier\source\repos\JIPxx\Debug\jip_nvse.dll
+  Installing DLL...
+          1 file(s) copied.

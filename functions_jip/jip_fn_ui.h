@@ -1,84 +1,86 @@
 #pragma once
 
-DEFINE_COMMAND_PLUGIN(IsComponentLoaded, 0, kParams_OneString);
-DEFINE_COMMAND_PLUGIN(InjectUIXML, 0, kParams_TwoStrings);
-DEFINE_COMMAND_PLUGIN(InjectUIComponent, 0, kParams_OneString_OneFormatString);
-DEFINE_COMMAND_PLUGIN(GetCursorPos, 0, kParams_OneAxis);
-DEFINE_COMMAND_PLUGIN(GetUIString, 0, kParams_OneString);
-DEFINE_COMMAND_PLUGIN(GetActiveMenuMode, 0, nullptr);
-DEFINE_COMMAND_PLUGIN(GetActiveUIComponentName, 0, nullptr);
-DEFINE_COMMAND_PLUGIN(GetActiveUIComponentFullName, 0, nullptr);
-DEFINE_COMMAND_PLUGIN(GetActiveUIComponentID, 0, nullptr);
-DEFINE_COMMAND_PLUGIN(GetMenuTargetRef, 0, kParams_OneInt);
-DEFINE_COMMAND_PLUGIN(GetMenuItemFilter, 0, kParams_OneInt_OneOptionalInt);
-DEFINE_COMMAND_PLUGIN(ClickMenuButton, 0, kParams_OneString_OneOptionalInt);
-DEFINE_COMMAND_PLUGIN(GetSelectedItemRef, 0, nullptr);
-DEFINE_COMMAND_PLUGIN(GetBarterItems, 0, kParams_OneInt);
-DEFINE_COMMAND_PLUGIN(GetBarterGoldAlt, 0, nullptr);
-DEFINE_COMMAND_PLUGIN(GetRecipeMenuSelection, 0, nullptr);
-DEFINE_COMMAND_PLUGIN(GetRecipeMenuCategory, 0, nullptr);
-DEFINE_COMMAND_PLUGIN(UnlockRecipeMenuQuantity, 0, kParams_OneOptionalInt);
-DEFINE_COMMAND_PLUGIN(GetRecipeMenuNumSubcategories, 0, nullptr);
-DEFINE_COMMAND_PLUGIN(MessageExAlt, 0, kParams_OneFloat_OneFormatString);
-DEFINE_COMMAND_PLUGIN(GetFontFile, 0, kParams_OneInt);
-DEFINE_COMMAND_PLUGIN(SetFontFile, 0, kParams_OneInt_OneString);
-DEFINE_COMMAND_PLUGIN(ShowTextInputMenu, 0, kParams_OneForm_TwoFloats_OneFormatString);
-DEFINE_COMMAND_PLUGIN(SetTextInputExtendedProps, 0, kParams_TwoFloats_ThreeOptionalInts);
-DEFINE_COMMAND_PLUGIN(SetTextInputString, 0, kParams_FormatString);
-DEFINE_COMMAND_PLUGIN(SetMessageDisabled, 0, kParams_OneForm_OneInt);
-DEFINE_COMMAND_PLUGIN(GetMessageDisabled, 0, kParams_OneMessage);
-DEFINE_COMMAND_PLUGIN(GetMessageFlags, 0, kParams_OneMessage);
-DEFINE_COMMAND_PLUGIN(SetMessageFlags, 0, kParams_OneMessage_OneInt);
-DEFINE_COMMAND_PLUGIN(SetMessageDisplayTime, 0, kParams_OneMessage_OneInt);
-DEFINE_COMMAND_PLUGIN(SetOnMenuClickEventHandler, 0, kParams_OneForm_OneInt_OneString);
-DEFINE_COMMAND_PLUGIN(SetOnMenuOpenEventHandler, 0, kParams_OneForm_OneInt_OneOptionalInt);
-DEFINE_COMMAND_PLUGIN(SetOnMenuCloseEventHandler, 0, kParams_OneForm_OneInt_OneOptionalInt);
-DEFINE_COMMAND_PLUGIN(SetOnMouseoverChangeEventHandler, 0, kParams_OneForm_OneInt_OneOptionalInt);
-DEFINE_COMMAND_PLUGIN(RefreshItemsList, 0, nullptr);
-DEFINE_COMMAND_PLUGIN(GetBarterPriceMult, 0, kParams_OneInt);
-DEFINE_COMMAND_PLUGIN(SetBarterPriceMult, 0, kParams_OneInt_OneFloat);
-DEFINE_COMMAND_PLUGIN(SetTerminalUIModel, 0, kParams_OneForm_OneOptionalString);
-DEFINE_COMMAND_PLUGIN(ShowQuantityMenu, 0, kParams_OneForm_OneInt_OneOptionalInt);
-DEFINE_COMMAND_PLUGIN(MessageBoxExAlt, 0, kParams_OneForm_OneFormatString);
-DEFINE_COMMAND_PLUGIN(GetVATSTargets, 0, nullptr);
-DEFINE_CMD_COND_PLUGIN(IsInCharGen, 0, nullptr);
-DEFINE_COMMAND_PLUGIN(ToggleCraftingMessages, 0, kParams_OneOptionalInt);
-DEFINE_COMMAND_PLUGIN(SetCursorPos, 0, kParams_TwoFloats);
-DEFINE_COMMAND_PLUGIN(UnloadUIComponent, 0, kParams_OneString);
-DEFINE_COMMAND_PLUGIN(ClearMessageQueue, 0, nullptr);
-DEFINE_COMMAND_PLUGIN(SetSystemColor, 0, kParams_FourInts);
-DEFINE_COMMAND_PLUGIN(SuppressQuestMessages, 0, nullptr);
-DEFINE_COMMAND_PLUGIN(EnableImprovedRecipeMenu, 0, nullptr);
-DEFINE_COMMAND_PLUGIN(ClickMenuTile, 0, kParams_OneString);
-DEFINE_COMMAND_PLUGIN(TogglePipBoyLight, 0, kParams_OneOptionalInt);
-DEFINE_COMMAND_PLUGIN(InitItemFilter, 0, nullptr);
-DEFINE_COMMAND_PLUGIN(SetItemFilter, 0, kParams_OneOptionalString)
-DEFINE_COMMAND_PLUGIN(ToggleHUDCursor, 0, kParams_OneOptionalInt)
-DEFINE_COMMAND_PLUGIN(AddTileFromTemplate, 0, kParams_FormatString);
-DEFINE_COMMAND_PLUGIN(SetUIFloatGradual, 0, kParams_OneString_ThreeOptionalFloats_OneOptionalInt);
-DEFINE_COMMAND_PLUGIN(CloseActiveMenu, 0, kParams_OneOptionalInt);
-DEFINE_COMMAND_PLUGIN(ShowLevelUpMenuEx, 0, kParams_OneInt);
-DEFINE_COMMAND_PLUGIN(AttachUIXML, 1, kParams_TwoStrings);
-DEFINE_COMMAND_PLUGIN(AttachUIComponent, 1, kParams_OneString_OneFormatString);
-DEFINE_COMMAND_PLUGIN(GetWorldMapPosMults, 1, kParams_TwoScriptVars);
-DEFINE_COMMAND_PLUGIN(ProjectUITile, 1, kParams_TwoStrings_FourFloats);
-DEFINE_COMMAND_PLUGIN(GetStringUIDimensions, 0, kParams_OneString_OneInt_OneFloat_ThreeScriptVars);
-DEFINE_COMMAND_PLUGIN(GetMenuItemListRefs, 0, kParams_TwoOptionalInts);
+DEFINE_COMMAND_PLUGIN(IsComponentLoaded, 0, 1, kParams_OneString);
+DEFINE_COMMAND_PLUGIN(InjectUIXML, 0, 2, kParams_TwoStrings);
+DEFINE_COMMAND_PLUGIN(InjectUIComponent, 0, 22, kParams_OneString_OneFormatString);
+DEFINE_COMMAND_PLUGIN(GetCursorPos, 0, 1, kParams_OneAxis);
+DEFINE_COMMAND_PLUGIN(GetUIString, 0, 1, kParams_OneString);
+DEFINE_COMMAND_PLUGIN(GetActiveMenuMode, 0, 0, nullptr);
+DEFINE_COMMAND_PLUGIN(GetActiveUIComponentName, 0, 0, nullptr);
+DEFINE_COMMAND_PLUGIN(GetActiveUIComponentFullName, 0, 0, nullptr);
+DEFINE_COMMAND_PLUGIN(GetActiveUIComponentID, 0, 0, nullptr);
+DEFINE_COMMAND_PLUGIN(GetMenuTargetRef, 0, 1, kParams_OneInt);
+DEFINE_COMMAND_PLUGIN(GetMenuItemFilter, 0, 2, kParams_OneInt_OneOptionalInt);
+DEFINE_COMMAND_PLUGIN(ClickMenuButton, 0, 2, kParams_OneString_OneOptionalInt);
+DEFINE_COMMAND_PLUGIN(GetSelectedItemRef, 0, 0, nullptr);
+DEFINE_COMMAND_PLUGIN(GetBarterItems, 0, 1, kParams_OneInt);
+DEFINE_COMMAND_PLUGIN(GetBarterGoldAlt, 0, 0, nullptr);
+DEFINE_COMMAND_PLUGIN(GetRecipeMenuSelection, 0, 0, nullptr);
+DEFINE_COMMAND_PLUGIN(GetRecipeMenuCategory, 0, 0, nullptr);
+DEFINE_COMMAND_PLUGIN(UnlockRecipeMenuQuantity, 0, 1, kParams_OneOptionalInt);
+DEFINE_COMMAND_PLUGIN(GetRecipeMenuNumSubcategories, 0, 0, nullptr);
+DEFINE_COMMAND_PLUGIN(MessageExAlt, 0, 22, kParams_OneFloat_OneFormatString);
+DEFINE_COMMAND_PLUGIN(GetFontFile, 0, 1, kParams_OneInt);
+DEFINE_COMMAND_PLUGIN(SetFontFile, 0, 2, kParams_OneInt_OneString);
+DEFINE_COMMAND_PLUGIN(ShowTextInputMenu, 0, 24, kParams_OneForm_TwoFloats_OneFormatString);
+DEFINE_COMMAND_PLUGIN(SetTextInputExtendedProps, 0, 5, kParams_TwoFloats_ThreeOptionalInts);
+DEFINE_COMMAND_PLUGIN(SetTextInputString, 0, 21, kParams_FormatString);
+DEFINE_COMMAND_PLUGIN(SetMessageDisabled, 0, 2, kParams_OneForm_OneInt);
+DEFINE_COMMAND_PLUGIN(GetMessageDisabled, 0, 1, kParams_OneMessage);
+DEFINE_COMMAND_PLUGIN(GetMessageFlags, 0, 1, kParams_OneMessage);
+DEFINE_COMMAND_PLUGIN(SetMessageFlags, 0, 2, kParams_OneMessage_OneInt);
+DEFINE_COMMAND_PLUGIN(SetMessageDisplayTime, 0, 2, kParams_OneMessage_OneInt);
+DEFINE_COMMAND_PLUGIN(SetOnMenuClickEventHandler, 0, 3, kParams_OneForm_OneInt_OneString);
+DEFINE_COMMAND_PLUGIN(SetOnMenuOpenEventHandler, 0, 3, kParams_OneForm_OneInt_OneOptionalInt);
+DEFINE_COMMAND_PLUGIN(SetOnMenuCloseEventHandler, 0, 3, kParams_OneForm_OneInt_OneOptionalInt);
+DEFINE_COMMAND_PLUGIN(SetOnMouseoverChangeEventHandler, 0, 3, kParams_OneForm_OneInt_OneOptionalInt);
+DEFINE_COMMAND_PLUGIN(RefreshItemsList, 0, 0, nullptr);
+DEFINE_COMMAND_PLUGIN(GetBarterPriceMult, 0, 1, kParams_OneInt);
+DEFINE_COMMAND_PLUGIN(SetBarterPriceMult, 0, 2, kParams_OneInt_OneFloat);
+DEFINE_COMMAND_PLUGIN(SetTerminalUIModel, 0, 2, kParams_OneForm_OneOptionalString);
+DEFINE_COMMAND_PLUGIN(ShowQuantityMenu, 0, 3, kParams_OneForm_OneInt_OneOptionalInt);
+DEFINE_COMMAND_PLUGIN(MessageBoxExAlt, 0, 22, kParams_OneForm_OneFormatString);
+DEFINE_COMMAND_PLUGIN(GetVATSTargets, 0, 0, nullptr);
+DEFINE_CMD_COND_PLUGIN(IsInCharGen, 0, 0, nullptr);
+DEFINE_COMMAND_PLUGIN(ToggleCraftingMessages, 0, 1, kParams_OneOptionalInt);
+DEFINE_COMMAND_PLUGIN(SetCursorPos, 0, 2, kParams_TwoFloats);
+DEFINE_COMMAND_PLUGIN(UnloadUIComponent, 0, 1, kParams_OneString);
+DEFINE_COMMAND_PLUGIN(ClearMessageQueue, 0, 0, nullptr);
+DEFINE_COMMAND_PLUGIN(SetSystemColor, 0, 4, kParams_FourInts);
+DEFINE_COMMAND_PLUGIN(SuppressQuestMessages, 0, 0, nullptr);
+DEFINE_COMMAND_PLUGIN(EnableImprovedRecipeMenu, 0, 0, nullptr);
+DEFINE_COMMAND_PLUGIN(ClickMenuTile, 0, 1, kParams_OneString);
+DEFINE_COMMAND_PLUGIN(TogglePipBoyLight, 0, 1, kParams_OneOptionalInt);
+DEFINE_COMMAND_PLUGIN(InitItemFilter, 0, 0, nullptr);
+DEFINE_COMMAND_PLUGIN(SetItemFilter, 0, 1, kParams_OneOptionalString)
+DEFINE_COMMAND_PLUGIN(ToggleHUDCursor, 0, 1, kParams_OneOptionalInt)
+DEFINE_COMMAND_PLUGIN(AddTileFromTemplate, 0, 21, kParams_FormatString);
+DEFINE_COMMAND_PLUGIN(SetUIFloatGradual, 0, 5, kParams_OneString_ThreeOptionalFloats_OneOptionalInt);
+DEFINE_COMMAND_PLUGIN(CloseActiveMenu, 0, 1, kParams_OneOptionalInt);
+DEFINE_COMMAND_PLUGIN(ShowLevelUpMenuEx, 0, 1, kParams_OneInt);
+DEFINE_COMMAND_PLUGIN(AttachUIXML, 1, 2, kParams_TwoStrings);
+DEFINE_COMMAND_PLUGIN(AttachUIComponent, 1, 22, kParams_OneString_OneFormatString);
+DEFINE_COMMAND_PLUGIN(GetWorldMapPosMults, 1, 2, kParams_TwoScriptVars);
+DEFINE_COMMAND_PLUGIN(ProjectUITile, 1, 6, kParams_TwoStrings_FourFloats);
+DEFINE_COMMAND_PLUGIN(GetStringUIDimensions, 0, 6, kParams_OneString_OneInt_OneFloat_ThreeScriptVars);
+DEFINE_COMMAND_PLUGIN(GetMenuItemListRefs, 0, 2, kParams_TwoOptionalInts);
 
 bool Cmd_IsComponentLoaded_Execute(COMMAND_ARGS)
 {
 	char tilePath[0x100];
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &tilePath) && GetTargetComponent(tilePath))
 		*result = 1;
+	else *result = 0;
 	return true;
 }
 
 bool Cmd_InjectUIXML_Execute(COMMAND_ARGS)
 {
+	*result = 0;
 	char tilePath[0x100], xmlPath[0x80];
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &tilePath, &xmlPath))
-		if (Tile *component = GetTargetComponent(tilePath); component && component->ReadXML(xmlPath))
-			*result = 1;
+		if (Tile *component = GetTargetComponent(tilePath))
+			*result = component->ReadXML(xmlPath) ? 1 : 0;
 	return true;
 }
 
@@ -116,6 +118,7 @@ __declspec(naked) Tile* __stdcall InjectUIComponent(Tile *parentTile, char *data
 
 bool Cmd_InjectUIComponent_Execute(COMMAND_ARGS)
 {
+	*result = 0;
 	char tilePath[0x100], *buffer = GetStrArgBuffer();
 	if (ExtractFormatStringArgs(1, buffer, EXTRACT_ARGS_EX, kCommandInfo_InjectUIComponent.numParams, &tilePath))
 		if (Tile *component = GetTargetComponent(tilePath); component && InjectUIComponent(component, buffer))
@@ -128,6 +131,7 @@ bool Cmd_GetCursorPos_Execute(COMMAND_ARGS)
 	char axis;
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &axis))
 		*result = (axis == 'X') ? g_interfaceManager->cursorX : g_interfaceManager->cursorY;
+	else *result = 0;
 	return true;
 }
 
@@ -191,10 +195,11 @@ bool Cmd_GetActiveUIComponentID_Execute(COMMAND_ARGS)
 
 bool Cmd_GetMenuTargetRef_Execute(COMMAND_ARGS)
 {
+	REFR_RES = 0;
 	UInt32 menuID;
-	if (!ExtractArgsEx(EXTRACT_ARGS_EX, &menuID) || (menuID < kMenuType_Min) || (menuID > kMenuType_Max))
+	if (!ExtractArgsEx(EXTRACT_ARGS_EX, &menuID) || (menuID > kMenuType_Max))
 		return true;
-	TileMenu *tileMenu = g_tileMenuArray[menuID];
+	TileMenu *tileMenu = g_tileMenuArray[menuID - kMenuType_Min];
 	Menu *menu = tileMenu ? tileMenu->menu : nullptr;
 	if (!menu) return true;
 	TESForm *menuRef = nullptr;
@@ -326,6 +331,7 @@ bool Cmd_GetMenuItemFilter_Execute(COMMAND_ARGS)
 
 bool Cmd_ClickMenuButton_Execute(COMMAND_ARGS)
 {
+	*result = 0;
 	char tilePath[0x100];
 	UInt32 times = 1;
 	if (!ExtractArgsEx(EXTRACT_ARGS_EX, &tilePath, &times) || !GetMenuMode() || !times) return true;
@@ -361,6 +367,7 @@ bool Cmd_ClickMenuButton_Execute(COMMAND_ARGS)
 
 bool Cmd_GetSelectedItemRef_Execute(COMMAND_ARGS)
 {
+	REFR_RES = 0;
 	TESForm *itemRef = nullptr;
 	TESObjectREFR *container = g_thePlayer;
 	ContChangesEntry *entry = nullptr;
@@ -436,6 +443,7 @@ bool Cmd_GetSelectedItemRef_Execute(COMMAND_ARGS)
 
 bool Cmd_GetBarterItems_Execute(COMMAND_ARGS)
 {
+	*result = 0;
 	UInt32 sold;
 	BarterMenu *brtMenu = BarterMenu::Get();
 	if (!ExtractArgsEx(EXTRACT_ARGS_EX, &sold) || !brtMenu || !brtMenu->merchantRef) return true;
@@ -455,22 +463,21 @@ bool Cmd_GetBarterItems_Execute(COMMAND_ARGS)
 
 bool Cmd_GetBarterGoldAlt_Execute(COMMAND_ARGS)
 {
-	if (BarterMenu::Get())
-		*result = (int)BarterMenu::Get()->merchantGold;
+	*result = BarterMenu::Get() ? (int)BarterMenu::Get()->merchantGold : 0;
 	return true;
 }
 
 bool Cmd_GetRecipeMenuSelection_Execute(COMMAND_ARGS)
 {
-	if (RecipeMenu::Get() && RecipeMenu::Selection())
-		REFR_RES = RecipeMenu::Selection()->refID;
+	REFR_RES = 0;
+	if (RecipeMenu::Get() && RecipeMenu::Selection()) REFR_RES = RecipeMenu::Selection()->refID;
 	return true;
 }
 
 bool Cmd_GetRecipeMenuCategory_Execute(COMMAND_ARGS)
 {
-	if (RecipeMenu::Get())
-		REFR_RES = RecipeMenu::Get()->category->refID;
+	REFR_RES = 0;
+	if (RecipeMenu::Get()) REFR_RES = RecipeMenu::Get()->category->refID;
 	return true;
 }
 
@@ -529,6 +536,7 @@ bool Cmd_GetFontFile_Execute(COMMAND_ARGS)
 
 bool Cmd_SetFontFile_Execute(COMMAND_ARGS)
 {
+	*result = 0;
 	UInt32 fontID;
 	char dataPathFull[0x100], *dataPath = dataPathFull + 5;
 	*(UInt32*)dataPathFull = 'atad';
@@ -680,6 +688,7 @@ bool Cmd_ShowTextInputMenu_Execute(COMMAND_ARGS)
 	if (!TextEditMenu::Get() && ExtractFormatStringArgs(3, msgTitle, EXTRACT_ARGS_EX, kCommandInfo_ShowTextInputMenu.numParams,
 		&callback, &width, &height) && IS_ID(callback, Script) && ShowTextEditMenu(width, height, msgTitle, callback))
 		*result = 1;
+	else *result = 0;
 	return true;
 }
 
@@ -735,23 +744,24 @@ bool Cmd_SetMessageDisabled_Execute(COMMAND_ARGS)
 		form->SetJIPFlag(kHookFormFlag6_MessageDisabled, disable != 0);
 	}
 	while (iter = iter->next);
-	HOOK_SET(MessageDisabled, true);
+	HOOK_SET(ShowMessage, true);
+	HOOK_SET(ShowTutorial, true);
 	return true;
 }
 
 bool Cmd_GetMessageDisabled_Execute(COMMAND_ARGS)
 {
 	BGSMessage *message;
-	if (ExtractArgsEx(EXTRACT_ARGS_EX, &message) && (message->jipFormFlags6 & kHookFormFlag6_MessageDisabled))
-		*result = 1;
+	if (ExtractArgsEx(EXTRACT_ARGS_EX, &message) && (message->jipFormFlags6 & kHookFormFlag6_MessageDisabled)) *result = 1;
+	else *result = 0;
 	return true;
 }
 
 bool Cmd_GetMessageFlags_Execute(COMMAND_ARGS)
 {
 	BGSMessage *message;
-	if (ExtractArgsEx(EXTRACT_ARGS_EX, &message))
-		*result = message->msgFlags;
+	if (ExtractArgsEx(EXTRACT_ARGS_EX, &message)) *result = message->msgFlags;
+	else *result = 0;
 	return true;
 }
 
@@ -861,7 +871,9 @@ bool Cmd_SetOnMenuClickEventHandler_Execute(COMMAND_ARGS)
 	return true;
 }
 
-void SetOnMenuStateEvent(Script *script, bool doAdd, char idx, UInt8 eventType)
+UInt8 s_menuStateEventType = 0;
+
+void SetOnMenuStateEvent(Script *script, bool doAdd, char idx)
 {
 	MenuStateCallbacks *callbacks = s_menuStateEventMap[idx];
 	if (!callbacks)
@@ -870,35 +882,40 @@ void SetOnMenuStateEvent(Script *script, bool doAdd, char idx, UInt8 eventType)
 		callbacks = new (Pool_Alloc<MenuStateCallbacks>()) MenuStateCallbacks();
 		s_menuStateEventMap[idx] = callbacks;
 	}
-	EventCallbackScripts *scripts = (eventType == 2) ? &callbacks->onMouseover : (eventType ? &callbacks->onClose : &callbacks->onOpen);
+	EventCallbackScripts *scripts = (s_menuStateEventType == 2) ? &callbacks->onMouseover : (s_menuStateEventType ? &callbacks->onClose : &callbacks->onOpen);
 	if (doAdd)
 	{
 		if (scripts->HasKey(script)) return;
-		if (eventType == 2)
+		if (s_menuStateEventType == 2)
 		{
 			if (scripts->Empty())
 				HOOK_INC(MenuHandleMouseover);
 		}
 		else if (callbacks->onOpen.Empty() && callbacks->onClose.Empty())
-			HOOK_INC(MenuState);
+		{
+			HOOK_INC(MenuStateOpen);
+			HOOK_INC(MenuStateClose);
+		}
 		scripts->Insert(script);
 	}
 	else
 	{
 		if (!scripts->Erase(script)) return;
-		if (eventType == 2)
+		if (s_menuStateEventType == 2)
 		{
 			if (scripts->Empty())
 				HOOK_DEC(MenuHandleMouseover);
 		}
 		else if (callbacks->onOpen.Empty() && callbacks->onClose.Empty())
-			HOOK_DEC(MenuState);
+		{
+			HOOK_DEC(MenuStateOpen);
+			HOOK_DEC(MenuStateClose);
+		}
 	}
 }
 
 bool SetOnMenuStateEventHandler_Execute(COMMAND_ARGS)
 {
-	CAPTURE_CL(eventType)
 	Script *script;
 	UInt32 addEvnt, menuID = 0;
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &script, &addEvnt, &menuID) && IS_ID(script, Script))
@@ -908,12 +925,12 @@ bool SetOnMenuStateEventHandler_Execute(COMMAND_ARGS)
 		if (!menuID)
 		{
 			for (idx = 0; idx < 36; idx++)
-				SetOnMenuStateEvent(script, doAdd, idx, eventType);
+				SetOnMenuStateEvent(script, doAdd, idx);
 		}
 		else if ((menuID >= kMenuType_Min) && (menuID <= kMenuType_Max))
 		{
 			idx = kMenuIDJumpTable[menuID - kMenuType_Min];
-			if (idx != -1) SetOnMenuStateEvent(script, doAdd, idx, eventType);
+			if (idx != -1) SetOnMenuStateEvent(script, doAdd, idx);
 		}
 	}
 	return true;
@@ -923,7 +940,7 @@ __declspec(naked) bool Cmd_SetOnMenuOpenEventHandler_Execute(COMMAND_ARGS)
 {
 	__asm
 	{
-		xor		cl, cl
+		mov		s_menuStateEventType, 0
 		jmp		SetOnMenuStateEventHandler_Execute
 	}
 }
@@ -932,7 +949,7 @@ __declspec(naked) bool Cmd_SetOnMenuCloseEventHandler_Execute(COMMAND_ARGS)
 {
 	__asm
 	{
-		mov		cl, 1
+		mov		s_menuStateEventType, 1
 		jmp		SetOnMenuStateEventHandler_Execute
 	}
 }
@@ -941,7 +958,7 @@ __declspec(naked) bool Cmd_SetOnMouseoverChangeEventHandler_Execute(COMMAND_ARGS
 {
 	__asm
 	{
-		mov		cl, 2
+		mov		s_menuStateEventType, 2
 		jmp		SetOnMenuStateEventHandler_Execute
 	}
 }
@@ -958,6 +975,7 @@ bool Cmd_GetBarterPriceMult_Execute(COMMAND_ARGS)
 	BarterMenu *brtMenu = BarterMenu::Get();
 	if (brtMenu && ExtractArgsEx(EXTRACT_ARGS_EX, &sellMult))
 		*result = sellMult ? brtMenu->sellValueMult : brtMenu->buyValueMult;
+	else *result = 0;
 	return true;
 }
 
@@ -1054,6 +1072,7 @@ bool Cmd_ShowQuantityMenu_Execute(COMMAND_ARGS)
 		CaptureLambdaVars(callback);
 		*result = 1;
 	}
+	else *result = 0;
 	return true;
 }
 
@@ -1149,6 +1168,7 @@ bool Cmd_MessageBoxExAlt_Execute(COMMAND_ARGS)
 
 bool Cmd_GetVATSTargets_Execute(COMMAND_ARGS)
 {
+	*result = 0;
 	if (!VATSMenu::Get()) return true;
 	TempElements *tmpElements = GetTempElements();
 	auto iter = GameGlobals::VATSTargetList()->Head();
@@ -1163,32 +1183,35 @@ bool Cmd_GetVATSTargets_Execute(COMMAND_ARGS)
 	return true;
 }
 
-__declspec(noinline) bool InCharGen()
+bool InCharGen()
 {
-	return g_tileMenuArray[kMenuType_CharGen] || g_tileMenuArray[kMenuType_SpecialBook] || 
-		g_tileMenuArray[kMenuType_LoveTester] || g_tileMenuArray[kMenuType_Trait];
+	return g_tileMenuArray[kMenuType_CharGen - kMenuType_Min] || g_tileMenuArray[kMenuType_SpecialBook - kMenuType_Min] || 
+		g_tileMenuArray[kMenuType_LoveTester - kMenuType_Min] || g_tileMenuArray[kMenuType_Trait - kMenuType_Min];
 }
 
 bool Cmd_IsInCharGen_Execute(COMMAND_ARGS)
 {
-	if (InCharGen())
-		*result = 1;
+	*result = InCharGen();
 	return true;
 }
 
 bool Cmd_IsInCharGen_Eval(COMMAND_ARGS_EVAL)
 {
-	if (InCharGen())
-		*result = 1;
+	*result = InCharGen();
 	return true;
 }
 
+bool s_craftingMessages = true;
+
 bool Cmd_ToggleCraftingMessages_Execute(COMMAND_ARGS)
 {
-	int state = *(UInt8*)0x728933 == 0x8D, toggle;
-	*result = state;
-	if (NUM_ARGS && ExtractArgsEx(EXTRACT_ARGS_EX, &toggle) && (state != toggle))
-		SafeWriteBuf(0x728933, toggle ? "\x8D\x4D\xCC\xE8\x75" : "\xE9\xC4\x00\x00\x00", 5);
+	*result = s_craftingMessages;
+	UInt32 toggle;
+	if (NUM_ARGS && ExtractArgsEx(EXTRACT_ARGS_EX, &toggle) && (s_craftingMessages == !toggle))
+	{
+		s_craftingMessages = !s_craftingMessages;
+		SafeWriteBuf(0x728933, s_craftingMessages ? "\x8D\x4D\xCC\xE8\x75" : "\xE9\xC4\x00\x00\x00", 5);
+	}
 	return true;
 }
 
@@ -1349,8 +1372,8 @@ __declspec(naked) void RecipeMenuCloseHook()
 {
 	__asm
 	{
-		cmp		byte ptr ds:0x728933, 0x8D
-		jz		doneSound
+		cmp		s_craftingMessages, 0
+		jnz		doneSound
 		push	0
 		push	1
 		push	dword ptr [ebp-0x20]
@@ -1404,12 +1427,14 @@ __declspec(naked) void RecipeMenuCloseHook()
 
 bool Cmd_EnableImprovedRecipeMenu_Execute(COMMAND_ARGS)
 {
-	if (*(UInt8*)0x7274E1 != 0xF)
+	static bool enabled = false;
+	if (!enabled)
 	{
-		SafeWrite8(0x7274E1, 0xF);
-		SafeWrite32(0x727660, (UInt32)RecipeMenuAcceptHook);
-		SAFE_WRITE_BUF(0x727675, "\x03\x03\x03\x03\x03\x03\x01");
+		enabled = true;
 		SafeWrite32(0x727975, 0x7FFFFFFF);
+		SafeWrite8(0x7274E1, 0xF);
+		SAFE_WRITE_BUF(0x727675, "\x03\x03\x03\x03\x03\x03\x01");
+		SafeWrite32(0x727660, (UInt32)RecipeMenuAcceptHook);
 		WriteRelJump(0x728A0C, (UInt32)RecipeMenuCloseHook);
 	}
 	return true;
@@ -1417,6 +1442,7 @@ bool Cmd_EnableImprovedRecipeMenu_Execute(COMMAND_ARGS)
 
 bool Cmd_ClickMenuTile_Execute(COMMAND_ARGS)
 {
+	*result = 0;
 	char tilePath[0x100];
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &tilePath) && GetMenuMode())
 		if (Tile *component = GetTargetComponent(tilePath); component && (component->GetValueFloat(kTileValue_target) > 0))
@@ -1592,6 +1618,7 @@ bool Cmd_ToggleHUDCursor_Execute(COMMAND_ARGS)
 
 bool Cmd_AddTileFromTemplate_Execute(COMMAND_ARGS)
 {
+	*result = 0;
 	char buffer[0x100];
 	if (ExtractFormatStringArgs(0, buffer, EXTRACT_ARGS_EX, kCommandInfo_AddTileFromTemplate.numParams))
 	{
@@ -1673,7 +1700,7 @@ bool Cmd_CloseActiveMenu_Execute(COMMAND_ARGS)
 			if (!menuID) continue;
 			if (menuID >= kMenuType_Min)
 			{
-				if (TileMenu *tileMenu = g_tileMenuArray[menuID])
+				if (TileMenu *tileMenu = g_tileMenuArray[menuID - kMenuType_Min])
 				{
 					if (FORenderedMenu *renderedMenu = intrfcMgr->renderedMenu; renderedMenu && (renderedMenu->tileMenu == tileMenu))
 						renderedMenu->Close();
@@ -1719,7 +1746,7 @@ bool Cmd_ShowLevelUpMenuEx_Execute(COMMAND_ARGS)
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &skillPoints))
 	{
 		CdeclCall(0x784C80);
-		if (auto menu = LevelUpMenu::Get())
+		if (LevelUpMenu *menu = *(LevelUpMenu**)0x11D9FDC)
 		{
 			menu->numSkillPointsToAssign = skillPoints;
 			ThisCall(0x785830, menu, 0);
@@ -1730,6 +1757,7 @@ bool Cmd_ShowLevelUpMenuEx_Execute(COMMAND_ARGS)
 
 bool Cmd_AttachUIXML_Execute(COMMAND_ARGS)
 {
+	*result = 0;
 	char nodeName[0x40], xmlPath[0x80];
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &nodeName, &xmlPath))
 		if (NiNode *targetNode = thisObj->GetNode(nodeName))
@@ -1743,6 +1771,7 @@ bool Cmd_AttachUIXML_Execute(COMMAND_ARGS)
 
 bool Cmd_AttachUIComponent_Execute(COMMAND_ARGS)
 {
+	*result = 0;
 	char nodeName[0x40], *buffer = GetStrArgBuffer();
 	if (ExtractFormatStringArgs(1, buffer, EXTRACT_ARGS_EX, kCommandInfo_AttachUIComponent.numParams, &nodeName))
 		if (NiNode *targetNode = thisObj->GetNode(nodeName))
@@ -1774,7 +1803,7 @@ bool Cmd_GetWorldMapPosMults_Execute(COMMAND_ARGS)
 					s_worldDimensionsA.InitDimensions(rootWorld);
 				}
 			}
-			NiPoint2 outPos(GetWorldMapPosMults(thisObj->position.PS2(), s_worldDimensionsA));
+			NiPoint2 outPos = GetWorldMapPosMults(thisObj->position.PS2(), s_worldDimensionsA);
 			outX->data = outPos.x;
 			outY->data = outPos.y;
 		}
@@ -1783,6 +1812,7 @@ bool Cmd_GetWorldMapPosMults_Execute(COMMAND_ARGS)
 
 bool Cmd_ProjectUITile_Execute(COMMAND_ARGS)
 {
+	*result = 0;
 	char tilePath[0x100], blockName[0x40];
 	NiVector4 scrArea;
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &tilePath, &blockName, &scrArea.x, &scrArea.y, &scrArea.z, &scrArea.w))
@@ -1825,6 +1855,7 @@ bool Cmd_GetStringUIDimensions_Execute(COMMAND_ARGS)
 
 bool Cmd_GetMenuItemListRefs_Execute(COMMAND_ARGS)
 {
+	*result = 0;
 	UInt32 inclFiltered = 0, rightSide = 0;
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &inclFiltered, &rightSide))
 	{

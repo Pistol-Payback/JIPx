@@ -1,26 +1,25 @@
 #pragma once
 
-DEFINE_COMMAND_PLUGIN(IsRadioRef, 1, nullptr);
-DEFINE_COMMAND_PLUGIN(GetRadioBroadcastType, 1, nullptr);
-DEFINE_COMMAND_PLUGIN(SetRadioBroadcastType, 1, kParams_OneInt);
-DEFINE_COMMAND_PLUGIN(GetRadioRadius, 1, nullptr);
-DEFINE_COMMAND_PLUGIN(SetRadioRadius, 1, kParams_OneFloat);
-DEFINE_COMMAND_PLUGIN(GetRadioStatic, 1, nullptr);
-DEFINE_COMMAND_PLUGIN(SetRadioStatic, 1, kParams_OneFloat);
-DEFINE_COMMAND_PLUGIN(GetRadioPosRef, 1, nullptr);
-DEFINE_COMMAND_PLUGIN(SetRadioPosRef, 1, kParams_OneObjectRef);
+DEFINE_COMMAND_PLUGIN(IsRadioRef, 1, 0, NULL);
+DEFINE_COMMAND_PLUGIN(GetRadioBroadcastType, 1, 0, NULL);
+DEFINE_COMMAND_PLUGIN(SetRadioBroadcastType, 1, 1, kParams_OneInt);
+DEFINE_COMMAND_PLUGIN(GetRadioRadius, 1, 0, NULL);
+DEFINE_COMMAND_PLUGIN(SetRadioRadius, 1, 1, kParams_OneFloat);
+DEFINE_COMMAND_PLUGIN(GetRadioStatic, 1, 0, NULL);
+DEFINE_COMMAND_PLUGIN(SetRadioStatic, 1, 1, kParams_OneFloat);
+DEFINE_COMMAND_PLUGIN(GetRadioPosRef, 1, 0, NULL);
+DEFINE_COMMAND_PLUGIN(SetRadioPosRef, 1, 1, kParams_OneObjectRef);
 
 bool Cmd_IsRadioRef_Execute(COMMAND_ARGS)
 {
-	if (thisObj->extraDataList.HasType(kXData_ExtraRadioData))
-		*result = 1;
+	*result = thisObj->extraDataList.HasType(kXData_ExtraRadioData);
 	return true;
 }
 
 bool Cmd_GetRadioBroadcastType_Execute(COMMAND_ARGS)
 {
-	if (auto xRadio = GetExtraType(&thisObj->extraDataList, ExtraRadioData))
-		*result = (int)xRadio->rangeType;
+	ExtraRadioData *xRadio = GetExtraType(&thisObj->extraDataList, ExtraRadioData);
+	*result = xRadio ? (int)xRadio->rangeType : 0;
 	return true;
 }
 
@@ -28,19 +27,21 @@ bool Cmd_SetRadioBroadcastType_Execute(COMMAND_ARGS)
 {
 	UInt32 type;
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &type) && (type <= 4))
-		if (auto xRadio = GetExtraType(&thisObj->extraDataList, ExtraRadioData))
-			if (xRadio->rangeType = type)
-			{
-				xRadio->radius = 0;
-				xRadio->staticPerc = 0;
-			}
+	{
+		ExtraRadioData *xRadio = GetExtraType(&thisObj->extraDataList, ExtraRadioData);
+		if (xRadio)
+		{
+			xRadio->rangeType = type;
+			if (type) xRadio->radius = xRadio->staticPerc = 0;
+		}
+	}
 	return true;
 }
 
 bool Cmd_GetRadioRadius_Execute(COMMAND_ARGS)
 {
-	if (auto xRadio = GetExtraType(&thisObj->extraDataList, ExtraRadioData); xRadio && !xRadio->rangeType)
-		*result = xRadio->radius;
+	ExtraRadioData *xRadio = GetExtraType(&thisObj->extraDataList, ExtraRadioData);
+	*result = (xRadio && !xRadio->rangeType) ? xRadio->radius : 0;
 	return true;
 }
 
@@ -48,15 +49,17 @@ bool Cmd_SetRadioRadius_Execute(COMMAND_ARGS)
 {
 	float radius;
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &radius) && (radius >= 0))
-		if (auto xRadio = GetExtraType(&thisObj->extraDataList, ExtraRadioData); xRadio && !xRadio->rangeType)
-			xRadio->radius = radius;
+	{
+		ExtraRadioData *xRadio = GetExtraType(&thisObj->extraDataList, ExtraRadioData);
+		if (xRadio && !xRadio->rangeType) xRadio->radius = radius;
+	}
 	return true;
 }
 
 bool Cmd_GetRadioStatic_Execute(COMMAND_ARGS)
 {
-	if (auto xRadio = GetExtraType(&thisObj->extraDataList, ExtraRadioData); xRadio && !xRadio->rangeType)
-		*result = xRadio->staticPerc;
+	ExtraRadioData *xRadio = GetExtraType(&thisObj->extraDataList, ExtraRadioData);
+	*result = (xRadio && !xRadio->rangeType) ? xRadio->staticPerc : 0;
 	return true;
 }
 
@@ -64,15 +67,17 @@ bool Cmd_SetRadioStatic_Execute(COMMAND_ARGS)
 {
 	float radStatic;
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &radStatic) && (radStatic >= 0))
-		if (auto xRadio = GetExtraType(&thisObj->extraDataList, ExtraRadioData); xRadio && !xRadio->rangeType)
-			xRadio->staticPerc = radStatic;
+	{
+		ExtraRadioData *xRadio = GetExtraType(&thisObj->extraDataList, ExtraRadioData);
+		if (xRadio && !xRadio->rangeType) xRadio->staticPerc = radStatic;
+	}
 	return true;
 }
 
 bool Cmd_GetRadioPosRef_Execute(COMMAND_ARGS)
 {
-	if (auto xRadio = GetExtraType(&thisObj->extraDataList, ExtraRadioData); xRadio && !xRadio->rangeType && xRadio->positionRef)
-		REFR_RES = xRadio->positionRef->refID;
+	ExtraRadioData *xRadio = GetExtraType(&thisObj->extraDataList, ExtraRadioData);
+	REFR_RES = (xRadio && !xRadio->rangeType && xRadio->positionRef) ? xRadio->positionRef->refID : 0;
 	return true;
 }
 
@@ -80,7 +85,9 @@ bool Cmd_SetRadioPosRef_Execute(COMMAND_ARGS)
 {
 	TESObjectREFR *refr;
 	if (ExtractArgsEx(EXTRACT_ARGS_EX, &refr))
-		if (auto xRadio = GetExtraType(&thisObj->extraDataList, ExtraRadioData); xRadio && !xRadio->rangeType)
-			xRadio->positionRef = refr;
+	{
+		ExtraRadioData *xRadio = GetExtraType(&thisObj->extraDataList, ExtraRadioData);
+		if (xRadio && !xRadio->rangeType) xRadio->positionRef = refr;
+	}
 	return true;
 }
