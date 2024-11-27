@@ -1040,6 +1040,7 @@ bool Cmd_GetNifBlockTranslation_Execute(COMMAND_ARGS)
 	return true;
 }
 
+/*
 bool Cmd_SetNifBlockTranslation_Execute(COMMAND_ARGS)
 {
 	char blockName[0x40];
@@ -1061,6 +1062,63 @@ bool Cmd_SetNifBlockTranslation_Execute(COMMAND_ARGS)
 			}
 			else if IS_TYPE(niBlock, NiPointLight)
 				if (NiPointLight *ptLight = (NiPointLight*)niBlock; ptLight->extraFlags & 1)
+					ptLight->vector100 = transltn;
+			niBlock->UpdateDownwardPass(kNiUpdateData, 0);
+		}
+	return true;
+}
+*/
+bool Cmd_SetNifBlockTranslation_Execute(COMMAND_ARGS)
+{
+	char blockName[0x40];
+	NiVector3 transltn;
+	UInt32 pcNode = 0, transform = 0;
+	if (ExtractArgsEx(EXTRACT_ARGS_EX, &blockName, &transltn.x, &transltn.y, &transltn.z, &pcNode, &transform) && blockName[0])
+		if (NiAVObject* niBlock = GetNifBlock(thisObj, pcNode, blockName))
+		{
+			switch (transform)
+			{
+			case 0:  // Set local position
+				niBlock->LocalTranslate() = transltn;
+				break;
+			case 1:  // Add to local position
+				niBlock->LocalTranslate() += transltn.PS();
+				break;
+			case 2:  // Set position based on world coordinates
+			{
+
+				//niBlock->LocalTranslate() = TransformWorldToLocal(niBlock->WorldTranslate(), transltn, thisObj->rotation.PS());
+				NiVector3 localPos;
+
+				// Step 1: Translate global point to ThisObj's origin
+				NiVector3 translatedPoint = transltn - niBlock->m_parent->WorldTranslate().PS();
+
+				// Step 2: Create the inverse of ThisObj's rotation matrix
+				NiMatrix33 rotationMatrix = niBlock->m_parent->WorldRotate();
+				//rotationMatrix.FromEulerPRYInv(thisObj->rotation.PS()); // Assuming this creates a rotation matrix from PRY
+
+				// Step 3: Rotate the translated point to ThisObj's local space
+				localPos.x = rotationMatrix.cr[0][0] * translatedPoint.x + rotationMatrix.cr[1][0] * translatedPoint.y + rotationMatrix.cr[2][0] * translatedPoint.z;
+				localPos.y = rotationMatrix.cr[0][1] * translatedPoint.x + rotationMatrix.cr[1][1] * translatedPoint.y + rotationMatrix.cr[2][1] * translatedPoint.z;
+				localPos.z = rotationMatrix.cr[0][2] * translatedPoint.x + rotationMatrix.cr[1][2] * translatedPoint.y + rotationMatrix.cr[2][2] * translatedPoint.z;
+
+				// Set the transformed local position to the nifBlock's translation
+				niBlock->LocalTranslate() = localPos;
+				break;
+			}
+			break;
+			case 3:  // Add to local position using global rotation
+				niBlock->LocalTranslate() += niBlock->WorldRotate().MultiplyVector(transltn.PS());
+				break;
+			}
+
+			if IS_NODE(niBlock)
+			{
+				if NOT_ACTOR(thisObj)
+					((NiNode*)niBlock)->ResetCollision();
+			}
+			else if IS_TYPE(niBlock, NiPointLight)
+				if (NiPointLight* ptLight = (NiPointLight*)niBlock; ptLight->extraFlags & 1)
 					ptLight->vector100 = transltn;
 			niBlock->UpdateDownwardPass(kNiUpdateData, 0);
 		}

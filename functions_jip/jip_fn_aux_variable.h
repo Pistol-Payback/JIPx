@@ -324,3 +324,209 @@ bool Cmd_AuxVarGetFltCond_Eval(COMMAND_ARGS_EVAL)
 			}
 	return true;
 }
+
+//LIBRARY..........................................................................
+/*
+int AuxVarGetSize(UInt32 refID, char* varName) {
+
+	AUX_VAR_CS
+		if (AuxVarInfo varInfo = { refID, varName }) {
+			if (AuxVarValsArr* valsArr = varInfo.GetArray()) {
+				return (int)valsArr->Size();
+			}
+		}
+	return -1;
+}
+
+int AuxVarGetType(UInt32 refID, char* varName, SInt32 idx = 0) {
+
+	AUX_VAR_CS
+		if (AuxVarInfo varInfo = { refID, varName }) {
+			if (AuxVariableValue* value = varInfo.GetValue(idx)) {
+				return value->GetType();
+			}
+		}
+	return -1;
+}
+
+double AuxVarGetFloat(UInt32 refID, char* varName, SInt32 idx = 0) {
+
+	AUX_VAR_CS
+		if (AuxVarInfo varInfo = { refID, varName }) {
+			if (AuxVariableValue* value = varInfo.GetValue(idx)) {
+				return value->GetFlt();
+			}
+		}
+	return -1;
+}
+
+void AuxVarSetFloat(UInt32 refID, double fltVal, char* varName, SInt32 idx = 0) {
+
+	AUX_VAR_CS
+		if (AuxVarInfo varInfo = { refID, varName }) {
+			if (AuxVariableValue* value = varInfo.GetValue(idx, true)) {
+				*value = fltVal;
+			}
+		}
+}
+
+UInt32 AuxVarGetRef(UInt32 refID, char* varName, SInt32 idx = 0) {
+
+	AUX_VAR_CS
+		if (AuxVarInfo varInfo = { refID, varName }) {
+			if (AuxVariableValue* value = varInfo.GetValue(idx)) {
+				return value->GetRef();
+			}
+		}
+	return 0;
+}
+
+void AuxVarSetRef(UInt32 refID, UInt32 refVal, char* varName, SInt32 idx = 0) {
+
+	AUX_VAR_CS
+		if (AuxVarInfo varInfo = { refID, varName }) {
+			if (AuxVariableValue* value = varInfo.GetValue(idx, true)) {
+				*value = refVal;
+			}
+		}
+}
+
+const char* AuxVarGetString(UInt32 refID, char* varName, SInt32 idx = 0) {
+
+	AUX_VAR_CS
+		if (AuxVarInfo varInfo = { refID, varName }) {
+			if (AuxVariableValue* value = varInfo.GetValue(idx)) {
+				return value->GetStr();
+			}
+		}
+	return NULL;
+}
+
+void AuxVarSetString(UInt32 refID, const char* buffer, char* varName, SInt32 idx = 0) {
+
+	AUX_VAR_CS
+		if (AuxVarInfo varInfo = { refID, varName }) {
+			if (AuxVariableValue* value = varInfo.GetValue(idx, true))
+				*value = buffer;
+		}
+
+}
+
+void AuxVarErase(UInt32 refID, char* varName, bool isTemp, SInt32 idx = -1) {
+
+	AuxVarModsMap& map = s_auxVariables[true];
+
+	if (auto findMod = map.Find(0xFF)) {
+		if (auto findOwner = findMod().Find(refID)) {
+			if (auto findVar = findOwner().Find(varName)) {
+				if (idx >= 0) {
+					if (!findVar().RemoveNth(idx))
+						return;
+
+					if (findVar().Empty())
+						findVar.Remove();
+				}
+				else {
+					findVar.Remove();
+				}
+
+				if (findOwner().Empty()) {
+					findOwner.Remove();
+					if (findMod().Empty())
+						findMod.Remove();
+				}
+
+				if (!isTemp) {
+					s_dataChangedFlags |= kChangedFlag_AuxVars;
+				}
+			}
+		}
+	}
+}
+
+void AuxVarEraseAll(UInt32 refID, bool isTemp) {
+
+	AUX_VAR_CS
+
+		AuxVarModsMap& map = s_auxVariables[isTemp];
+
+	if (auto findMod = map.Find(0xFF)) {
+		if (auto findOwner = map.Find(refID)) {
+			findOwner.Remove();
+			if (findMod().Empty()) findMod.Remove();
+			if (!isTemp)
+				s_dataChangedFlags |= kChangedFlag_AuxVars;
+		}
+	}
+}
+
+//template<typename T>
+bool AuxVarSetFromVectorFloat(const std::vector<double>& srcVector, AuxVarInfo* varInfo)
+{
+	AUX_VAR_CS
+		for (size_t idx = 0; idx < srcVector.size(); ++idx)
+		{
+			if (AuxVariableValue* value = varInfo->GetValue(idx, true))
+				*value = srcVector[idx];
+		}
+	return true;
+}
+*/
+bool AuxVarSetFromVectorInt(const std::vector<UInt32>& srcVector, AuxVarInfo* varInfo)
+{
+	AUX_VAR_CS
+		for (size_t idx = 0; idx < srcVector.size(); ++idx)
+		{
+			if (AuxVariableValue* value = varInfo->GetValue(idx, true))
+				*value = srcVector[idx];
+		}
+	return true;
+}
+
+bool AuxVarSetFromVectorString(const std::vector<char*>& srcVector, AuxVarInfo* varInfo)
+{
+	AUX_VAR_CS
+		for (size_t idx = 0; idx < srcVector.size(); ++idx)
+		{
+			if (AuxVariableValue* value = varInfo->GetValue(idx, true))
+				*value = srcVector[idx];
+		}
+	return true;
+}
+
+void AuxVarErase(AuxVarInfo* varInfo, SInt32 idx = -1)
+{
+	AUX_VAR_CS
+		if (auto findMod = varInfo->ModsMap().Find(varInfo->modIndex))
+			if (auto findOwner = findMod().Find(varInfo->ownerID))
+				if (auto findVar = findOwner().Find(varInfo->varName))
+				{
+					if (idx >= 0)
+					{
+						if (!findVar().RemoveNth(idx))
+							return;
+
+						if (findVar().Empty())
+							findVar.Remove();
+
+					}
+					else
+					{
+						findVar.Remove();
+					}
+
+					if (findOwner().Empty())
+					{
+						findOwner.Remove();
+
+						if (findMod().Empty())
+							findMod.Remove();
+
+					}
+
+				}
+}
+
+AuxVarInfo CreateAuxVarInfo(TESForm* form, TESObjectREFR* thisObj, char* pVarName) {
+	return AuxVarInfo(form, thisObj, pVarName);
+}

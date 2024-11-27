@@ -6,3 +6,6 @@ GetJIPLNVersion				@3
 ToggleObjectCollision		@4
 GetLNEventMask				@10
 ProcessLNEventHandler		@11
+
+SetDescriptionAltText       @12
+CreateAuxVarInfo			@20

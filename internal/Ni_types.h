@@ -47,7 +47,7 @@ struct NiVector3
 	__forceinline NiVector3(const NiVector3 &rhs) {*this = rhs;}
 	__forceinline explicit NiVector3(const NiMatrix33 &rhs) {*this = rhs;}
 	__forceinline explicit NiVector3(const NiQuaternion &rhs) {*this = rhs;}
-	__forceinline explicit NiVector3(const __m128 rhs) {SetPS(rhs);}
+	inline NiVector3(const __m128 rhs) {SetPS(rhs);}
 
 	__forceinline void operator=(NiVector3 &&rhs)
 	{
@@ -277,7 +277,9 @@ struct NiMatrix33
 		cr[0][3] = m01; cr[0][4] = m11; cr[0][5] = m21;
 		cr[0][6] = m02; cr[0][7] = m12; cr[0][8] = m22;
 	}
-	__forceinline explicit NiMatrix33(const NiMatrix33 &from) {*this = from;}
+
+	//__forceinline explicit NiMatrix33(const NiMatrix33& from) { *this = from; }
+	NiMatrix33(const NiMatrix33 &from) {*this = from;}
 	__forceinline explicit NiMatrix33(const NiVector3 &pry) {*this = pry;}
 	__forceinline explicit NiMatrix33(__m128 pry) {*this = pry;}
 	__forceinline explicit NiMatrix33(const NiQuaternion &qt) {*this = qt;}

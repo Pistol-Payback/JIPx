@@ -549,6 +549,16 @@ struct AuxVarInfo
 	char		*varName;
 	bool		isTemp;
 
+	AuxVarInfo(
+		TESForm* form,
+		TESObjectREFR* thisObj,
+		char* pVarName)
+		: ownerID(GetSubjectID(form, thisObj)),
+		varName(pVarName ? pVarName : nullptr), // Make a copy of pVarName if it's not null
+		isTemp(0),
+		modIndex(0xFF)
+	{}
+
 	AuxVarInfo(TESForm *form, TESObjectREFR *thisObj, Script *scriptObj, char *pVarName)
 	{
 		if (*pVarName)
@@ -574,6 +584,7 @@ struct AuxVarInfo
 
 	inline AuxVarModsMap& operator()() const {return s_auxVariables[isTemp];}
 
+	AuxVarModsMap& ModsMap() const { return isTemp ? s_auxVariables[0] : s_auxVariables[1]; }
 	AuxVarValsArr* __fastcall GetArray(bool addArr = false);
 	AuxVariableValue* __fastcall GetValue(SInt32 idx, bool addVal = false);
 
